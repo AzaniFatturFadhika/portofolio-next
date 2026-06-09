@@ -21,8 +21,8 @@ const cardVariants = {
 };
 
 const categories: SkillCategory[] = [
-  "Frontend",
-  "Backend",
+  "Programming Languages",
+  "Framework & Library",
   "Database",
   "DevOps",
   "Tools",
@@ -32,17 +32,17 @@ const categoryMeta: Record<
   SkillCategory,
   { color: string; description: string }
 > = {
-  Frontend: {
-    color: "from-pink-500 to-rose-500",
-    description: "User interfaces, frameworks, and modern web experiences",
+  "Programming Languages": {
+    color: "from-blue-500 to-indigo-500",
+    description: "Core programming languages I use daily for building applications",
   },
-  Backend: {
-    color: "from-indigo-500 to-blue-500",
-    description: "Server-side logic, APIs, and microservices",
+  "Framework & Library": {
+    color: "from-emerald-500 to-teal-500",
+    description: "Frameworks, libraries, and runtime environments",
   },
   Database: {
     color: "from-amber-500 to-orange-500",
-    description: "Data modeling, ORMs, and query optimization",
+    description: "Databases, ORMs, and caching solutions",
   },
   DevOps: {
     color: "from-cyan-500 to-teal-500",
@@ -143,11 +143,17 @@ export function SkillsSection() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       >
-                        {category === "Frontend" && (
-                          <path d="M9 18h6M10 22h4M12 2a7 7 0 1 0 7 7 7 7 0 0 0-7-7z" />
+                        {category === "Programming Languages" && (
+                          <>
+                            <path d="M9 18h6M10 22h4M12 2a7 7 0 1 0 7 7 7 7 0 0 0-7-7z" />
+                            <path d="M12 15.5v-7" />
+                          </>
                         )}
-                        {category === "Backend" && (
-                          <path d="M2 12h20M5 5l5 5-5 5M19 5l-5 5 5 5" />
+                        {category === "Framework & Library" && (
+                          <>
+                            <path d="M2 12h20M5 5l5 5-5 5M19 5l-5 5 5 5" />
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                          </>
                         )}
                         {category === "Database" && (
                           <path d="M3 3v18h18M9 9v12M15 9v12M21 9v12" />
@@ -179,7 +185,7 @@ export function SkillsSection() {
 
                 {/* Tech Stack Cards Grid */}
                 <motion.div
-                  className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 sm:gap-8`}
+                  className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 sm:gap-5"
                 >
                   {catSkills.map((skill, index) => (
                     <TechStackCard
@@ -216,21 +222,21 @@ function TechStackCard({
     <motion.div
       variants={cardVariants}
       style={{ transitionDelay: `${index * 0.04}s` }}
-      whileHover={{ y: -8, scale: 1.05 }}
+      whileHover={{ y: -6, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
-      className="group relative flex flex-col items-center justify-center gap-5 p-8 sm:p-9 rounded-3xl bg-card border border-border/60 shadow-sm hover:shadow-xl hover:border-primary/40 dark:hover:border-accent/40 transition-all duration-300 cursor-default select-none overflow-hidden"
+      className="group relative flex flex-col items-center justify-center gap-3 p-3 sm:p-4 rounded-2xl bg-card border border-border/60 shadow-sm hover:shadow-lg hover:border-primary/30 dark:hover:border-accent/30 transition-all duration-300 cursor-default select-none overflow-hidden"
     >
       {/* Gradient background on hover */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Tech Icon */}
-      <div className="relative z-10 flex items-center justify-center w-24 h-24 rounded-2xl bg-muted/50 group-hover:bg-white/80 dark:group-hover:bg-white/5 border border-border/40 group-hover:border-primary/30 dark:group-hover:border-accent/30 shadow-inner transition-all duration-300">
+      <div className="relative z-10 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted/50 group-hover:bg-white/80 dark:group-hover:bg-white/5 border border-border/40 group-hover:border-primary/30 dark:group-hover:border-accent/30 shadow-inner transition-all duration-300">
         {skill.iconName ? (
           // eslint-disable-next-line @next/next/no-img-element -- External SVG icons from devicon CDN
           <img
             src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.iconName}/${skill.iconName}-original.svg`}
             alt={`${skill.name} logo`}
-            className="w-14 h-14 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="w-9 h-9 sm:w-10 sm:h-10 object-contain transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
             onError={(e) => {
               const img = e.target as HTMLImageElement;
@@ -238,14 +244,14 @@ function TechStackCard({
             }}
           />
         ) : (
-          <span className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xl font-bold">
+          <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-sm sm:text-base font-bold">
             {skill.name.charAt(0)}
           </span>
         )}
       </div>
 
       {/* Skill Name */}
-      <span className="relative z-10 text-center text-sm font-semibold text-foreground/90 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300 line-clamp-2 leading-tight">
+      <span className="relative z-10 text-center text-xs sm:text-sm font-semibold text-foreground/90 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300 line-clamp-2 leading-tight">
         {skill.name}
       </span>
 

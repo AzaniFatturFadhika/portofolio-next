@@ -1,26 +1,23 @@
 import { Skill } from "@/types/skill";
 
 export const skills: Skill[] = [
-  // Frontend
-  { name: "React", category: "Frontend", iconName: "react" },
-  { name: "Next.js", category: "Frontend", iconName: "nextjs" },
-  { name: "TypeScript", category: "Frontend", iconName: "typescript" },
-  { name: "JavaScript", category: "Frontend", iconName: "javascript" },
-  { name: "Tailwind CSS", category: "Frontend", iconName: "tailwindcss" },
-  // { name: "Framer Motion", category: "Frontend", iconName: "framer-motion" },
+  // Programming Languages
+  { name: "TypeScript", category: "Programming Languages", iconName: "typescript" },
+  { name: "JavaScript", category: "Programming Languages", iconName: "javascript" },
+  { name: "Python", category: "Programming Languages", iconName: "python" },
+  { name: "PHP", category: "Programming Languages", iconName: "php" },
 
-  // Backend
-  { name: "Node.js", category: "Backend", iconName: "nodejs" },
-  // { name: "Express.js", category: "Backend", iconName: "express" },
-  { name: "NestJS", category: "Backend", iconName: "nestjs" },
-  { name: "Python", category: "Backend", iconName: "python" },
-  { name: "Laravel", category: "Backend", iconName: "laravel" },
-  { name: "PHP", category: "Backend", iconName: "php" },
+  // Framework & Library
+  { name: "React", category: "Framework & Library", iconName: "react" },
+  { name: "Next.js", category: "Framework & Library", iconName: "nextjs" },
+  { name: "Node.js", category: "Framework & Library", iconName: "nodejs" },
+  { name: "NestJS", category: "Framework & Library", iconName: "nestjs" },
+  { name: "Laravel", category: "Framework & Library", iconName: "laravel" },
+  { name: "Tailwind CSS", category: "Framework & Library", iconName: "tailwindcss" },
 
   // Database
   { name: "PostgreSQL", category: "Database", iconName: "postgresql" },
   { name: "MySQL", category: "Database", iconName: "mysql" },
-  // { name: "MongoDB", category: "Database", iconName: "mongodb" },
   { name: "Prisma ORM", category: "Database", iconName: "prisma" },
   { name: "Redis", category: "Database", iconName: "redis" },
 
