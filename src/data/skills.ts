@@ -2,36 +2,37 @@ import { Skill } from "@/types/skill";
 
 export const skills: Skill[] = [
   // Frontend
-  { name: "React", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "TypeScript", category: "Frontend" },
-  { name: "JavaScript", category: "Frontend" },
-  { name: "Tailwind CSS", category: "Frontend" },
-  { name: "HTML5 & CSS3", category: "Frontend" },
-  { name: "Framer Motion", category: "Frontend" },
+  { name: "React", category: "Frontend", iconName: "react" },
+  { name: "Next.js", category: "Frontend", iconName: "nextjs" },
+  { name: "TypeScript", category: "Frontend", iconName: "typescript" },
+  { name: "JavaScript", category: "Frontend", iconName: "javascript" },
+  { name: "Tailwind CSS", category: "Frontend", iconName: "tailwindcss" },
+  // { name: "Framer Motion", category: "Frontend", iconName: "framer-motion" },
 
   // Backend
-  { name: "Node.js", category: "Backend" },
-  { name: "Express.js", category: "Backend" },
-  { name: "NestJS", category: "Backend" },
-  { name: "REST APIs", category: "Backend" },
-  { name: "GraphQL", category: "Backend" },
+  { name: "Node.js", category: "Backend", iconName: "nodejs" },
+  // { name: "Express.js", category: "Backend", iconName: "express" },
+  { name: "NestJS", category: "Backend", iconName: "nestjs" },
+  { name: "Python", category: "Backend", iconName: "python" },
+  { name: "Laravel", category: "Backend", iconName: "laravel" },
+  { name: "PHP", category: "Backend", iconName: "php" },
 
   // Database
-  { name: "PostgreSQL", category: "Database" },
-  { name: "MySQL", category: "Database" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Prisma ORM", category: "Database" },
+  { name: "PostgreSQL", category: "Database", iconName: "postgresql" },
+  { name: "MySQL", category: "Database", iconName: "mysql" },
+  // { name: "MongoDB", category: "Database", iconName: "mongodb" },
+  { name: "Prisma ORM", category: "Database", iconName: "prisma" },
+  { name: "Redis", category: "Database", iconName: "redis" },
 
   // DevOps
-  { name: "Docker", category: "DevOps" },
-  { name: "Git & GitHub", category: "DevOps" },
-  { name: "GitHub Actions", category: "DevOps" },
-  { name: "Vercel", category: "DevOps" },
+  { name: "Docker", category: "DevOps", iconName: "docker" },
+  { name: "Git & GitHub", category: "DevOps", iconName: "github" },
+  { name: "GitHub Actions", category: "DevOps", iconName: "github" },
+  { name: "Vercel", category: "DevOps", iconName: "vercel" },
 
   // Tools
-  { name: "VS Code", category: "Tools" },
-  { name: "Postman", category: "Tools" },
-  { name: "Figma", category: "Tools" },
-  { name: "Linux Bash", category: "Tools" },
+  { name: "VS Code", category: "Tools", iconName: "vscode" },
+  { name: "Postman", category: "Tools", iconName: "postman" },
+  { name: "Figma", category: "Tools", iconName: "figma" },
+  { name: "Linux Bash", category: "Tools", iconName: "linux" },
 ];

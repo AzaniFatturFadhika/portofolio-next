@@ -16,6 +16,11 @@ export const socialLinks: SocialLink[] = [
     label: "LinkedIn Profile",
   },
   {
+    platform: "instagram",
+    url: "https://instagram.com/fadhika",
+    label: "Instagram Profile",
+  },
+  {
     platform: "email",
     url: "mailto:fadhika@example.com",
     label: "Email Address",
