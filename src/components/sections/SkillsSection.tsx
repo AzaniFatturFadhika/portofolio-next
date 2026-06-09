@@ -34,7 +34,8 @@ const categoryMeta: Record<
 > = {
   "Programming Languages": {
     color: "from-blue-500 to-indigo-500",
-    description: "Core programming languages I use daily for building applications",
+    description:
+      "Core programming languages I use daily for building applications",
   },
   "Framework & Library": {
     color: "from-emerald-500 to-teal-500",
@@ -100,43 +101,51 @@ export function SkillsSection() {
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
           <p className="text-muted-foreground text-sm sm:text-base max-w-md leading-relaxed mt-1">
-            Technologies and tools I use to create clean, performant applications.
+            Technologies and tools I use to create clean, performant
+            applications.
           </p>
         </motion.div>
 
-        {/* Skill Categories as Tabs/Grid */}
+        {/* Skill Categories in 2-column Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="flex flex-col gap-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-12"
         >
           {categories.map((category, catIndex) => {
             const catSkills = getSkillsByCategory(category);
             const meta = categoryMeta[category];
+            const isRight = catIndex % 2 === 1;
 
             return (
               <motion.div
                 key={category}
                 variants={containerVariants}
-                className="flex flex-col gap-8"
+                className={`flex flex-col gap-6 ${isRight ? "md:items-end" : ""}`}
               >
                 {/* Category Header */}
                 <motion.div
                   variants={cardVariants}
                   style={{ transitionDelay: `${catIndex * 0.05}s` }}
-                  className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-5"
+                  className={`flex flex-col sm:flex-row sm:items-end gap-3 ${isRight ? "sm:justify-end" : ""}`}
                 >
-                  <div className="flex items-end gap-3">
+                  <div
+                    className={`flex items-end gap-3 ${isRight ? "flex-row-reverse sm:flex-row" : ""} sm:flex-row`}
+                  >
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${meta.color} flex items-center justify-center shadow-lg`}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 20,
+                      }}
+                      className={`w-10 h-10 rounded-xl bg-gradient-to-br ${meta.color} flex items-center justify-center shadow-md`}
                     >
                       <svg
                         viewBox="0 0 24 24"
-                        className="w-6 h-6 text-white"
+                        className="w-5 h-5 text-white"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2}
@@ -144,16 +153,10 @@ export function SkillsSection() {
                         strokeLinejoin="round"
                       >
                         {category === "Programming Languages" && (
-                          <>
-                            <path d="M9 18h6M10 22h4M12 2a7 7 0 1 0 7 7 7 7 0 0 0-7-7z" />
-                            <path d="M12 15.5v-7" />
-                          </>
+                          <path d="M12 2v20M5 5h14M9 9v10" />
                         )}
                         {category === "Framework & Library" && (
-                          <>
-                            <path d="M2 12h20M5 5l5 5-5 5M19 5l-5 5 5 5" />
-                            <rect x="4" y="4" width="16" height="16" rx="2" />
-                          </>
+                          <path d="M2 12h20M5 5l5 5-5 5M19 5l-5 5 5 5" />
                         )}
                         {category === "Database" && (
                           <path d="M3 3v18h18M9 9v12M15 9v12M21 9v12" />
@@ -168,24 +171,24 @@ export function SkillsSection() {
                     </motion.div>
 
                     <div className="flex flex-col">
-                      <h3 className="text-xl sm:text-2xl font-bold text-foreground capitalize">
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground">
                         {category}
                       </h3>
-                      <p className="text-xs text-muted-foreground sm:max-w-sm mt-0.5">
+                      <p className="text-xs text-muted-foreground max-w-sm mt-0.5">
                         {meta.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex-1 h-px bg-border/40 sm:ml-16" />
-                  <span className="text-xs font-semibold text-muted-foreground bg-muted/80 px-3 py-1 rounded-full self-start sm:self-auto">
-                    {catSkills.length} skills
+                  <div className="flex-1 h-px bg-border/40 sm:ml-12" />
+                  <span className="text-xs font-semibold text-muted-foreground bg-muted/80 px-2 py-0.5 rounded-full self-start sm:self-auto">
+                    {catSkills.length}
                   </span>
                 </motion.div>
 
                 {/* Tech Stack Cards Grid */}
                 <motion.div
-                  className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 sm:gap-5"
+                  className={`flex flex-wrap gap-3 ${isRight ? "justify-end" : ""}`}
                 >
                   {catSkills.map((skill, index) => (
                     <TechStackCard
@@ -213,11 +216,7 @@ interface TechStackCardProps {
   colorClass: string;
 }
 
-function TechStackCard({
-  skill,
-  index,
-  colorClass,
-}: TechStackCardProps) {
+function TechStackCard({ skill, index, colorClass }: TechStackCardProps) {
   return (
     <motion.div
       variants={cardVariants}
@@ -256,12 +255,12 @@ function TechStackCard({
       </span>
 
       {/* Accent dot indicator */}
-      <motion.div
+      {/* <motion.div
         className={`absolute bottom-3 w-1.5 h-1.5 rounded-full bg-gradient-to-r ${colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.1, type: "spring", stiffness: 500 }}
-      />
+      /> */}
     </motion.div>
   );
 }

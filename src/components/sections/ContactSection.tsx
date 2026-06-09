@@ -36,7 +36,10 @@ export function ContactSection() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error" | "info";
+  } | null>(null);
 
   const getSocialIcon = (platform: string) => {
     switch (platform) {
@@ -126,7 +129,9 @@ export function ContactSection() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear validation error when typing
@@ -173,10 +178,17 @@ export function ContactSection() {
 
         if (response.ok) {
           setToast({
-            message: "Pesan berhasil dikirim! Saya akan segera menghubungi Anda.",
+            message:
+              "Pesan berhasil dikirim! Saya akan segera menghubungi Anda.",
             type: "success",
           });
-          setFormData({ name: "", email: "", subject: "", message: "", botfield: "" });
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+            botfield: "",
+          });
         } else {
           throw new Error("Gagal mengirim pesan.");
         }
@@ -187,11 +199,18 @@ export function ContactSection() {
           message: "Pesan terkirim! (Simulasi sukses lokal)",
           type: "success",
         });
-        setFormData({ name: "", email: "", subject: "", message: "", botfield: "" });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          botfield: "",
+        });
       }
     } catch (err) {
       setToast({
-        message: "Gagal mengirim pesan. Silakan hubungi saya via email langsung.",
+        message:
+          "Gagal mengirim pesan. Silakan hubungi saya via email langsung.",
         type: "error",
       });
       console.error(err);
@@ -221,7 +240,8 @@ export function ContactSection() {
           </h2>
           <div className="w-12 h-1 bg-accent rounded-full" />
           <p className="text-muted-foreground text-sm max-w-md mt-2">
-            Have a project in mind, a hiring opportunity, or just want to chat? Drop a message!
+            Have a project in mind, a hiring opportunity, or just want to chat?
+            Drop a message!
           </p>
         </div>
 
@@ -233,7 +253,8 @@ export function ContactSection() {
                 Get In Touch
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                I am usually active during business hours. Feel free to contact me through the form or my social channels.
+                I am usually active during business hours. Feel free to contact
+                me through the form or my social channels.
               </p>
             </div>
 
@@ -244,7 +265,9 @@ export function ContactSection() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">Email</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
+                    Email
+                  </span>
                   <a
                     href="mailto:fadhika@example.com"
                     className="text-sm font-semibold hover:text-primary dark:hover:text-accent transition-colors"
@@ -260,7 +283,9 @@ export function ContactSection() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">Lokasi</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground">
+                    Lokasi
+                  </span>
                   <span className="text-sm font-semibold">
                     Jakarta, Indonesia
                   </span>
@@ -293,7 +318,10 @@ export function ContactSection() {
 
           {/* Right Form */}
           <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="p-6 sm:p-8 rounded-2xl bg-card border border-border/80 shadow-sm flex flex-col gap-5">
+            <form
+              onSubmit={handleSubmit}
+              className="p-6 sm:p-8 rounded-2xl bg-card border border-border/80 shadow-sm flex flex-col gap-5"
+            >
               {/* Spam Honeypot Field */}
               <input
                 type="text"

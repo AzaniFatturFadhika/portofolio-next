@@ -6,7 +6,8 @@ import Card from "@/components/ui/Card";
 
 export const metadata = {
   title: "Blog | Fadhika Portfolio",
-  description: "Read technical articles on software engineering, web development, React, and TypeScript.",
+  description:
+    "Read technical articles on software engineering, web development, React, and TypeScript.",
 };
 
 export default function BlogListingPage() {
@@ -25,7 +26,7 @@ export default function BlogListingPage() {
 
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-foreground/80 hover:text-primary dark:hover:text-secondary transition-colors"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-foreground/80 hover:text-primary dark:hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Kembali ke Beranda
@@ -38,21 +39,26 @@ export default function BlogListingPage() {
             Technical Blog
           </h1>
           <p className="text-muted-foreground text-base sm:text-lg">
-            Tulisan seputar rekayasa perangkat lunak, optimasi performa, dan praktik terbaik dalam menulis kode bersih (clean code).
+            Tulisan seputar rekayasa perangkat lunak, optimasi performa, dan
+            praktik terbaik dalam menulis kode bersih (clean code).
           </p>
         </div>
 
         {/* Articles List Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {blogPosts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="block group"
+            >
               <Card className="h-full flex flex-col gap-5 p-7 group-hover:border-primary/30 transition-all duration-300">
                 {/* Meta details */}
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] uppercase tracking-wider font-extrabold text-accent bg-accent/10 px-2.5 py-1 rounded-full">
                     {post.category}
                   </span>
-                  
+
                   <div className="flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
@@ -67,7 +73,7 @@ export default function BlogListingPage() {
 
                 {/* Article Info */}
                 <div className="flex flex-col gap-2.5">
-                  <h2 className="text-xl sm:text-2xl font-bold group-hover:text-primary dark:group-hover:text-secondary transition-colors leading-snug">
+                  <h2 className="text-xl sm:text-2xl font-bold group-hover:text-primary dark:group-hover:text-primary transition-colors leading-snug">
                     {post.title}
                   </h2>
                   <p className="text-sm text-muted-foreground leading-relaxed">

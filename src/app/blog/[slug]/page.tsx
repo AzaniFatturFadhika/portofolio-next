@@ -54,7 +54,9 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
               Blog
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-foreground font-semibold line-clamp-1">{post.title}</span>
+            <span className="text-foreground font-semibold line-clamp-1">
+              {post.title}
+            </span>
           </nav>
 
           <Link
@@ -72,7 +74,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
             <span className="text-[10px] uppercase tracking-wider font-extrabold text-accent bg-accent/10 px-2.5 py-1 rounded-full">
               {post.category}
             </span>
-            
+
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5" />

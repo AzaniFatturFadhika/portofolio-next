@@ -10,14 +10,23 @@ import Container from "@/components/ui/Container";
 import Card from "@/components/ui/Card";
 
 export function ProjectsSection() {
-  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory | "All">("All");
+  const [selectedCategory, setSelectedCategory] = useState<
+    ProjectCategory | "All"
+  >("All");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  const categories: (ProjectCategory | "All")[] = ["All", "Web", "Mobile", "API", "Other"];
+  const categories: (ProjectCategory | "All")[] = [
+    "All",
+    "Web",
+    "Mobile",
+    "API",
+    "Other",
+  ];
 
-  const filteredProjects = selectedCategory === "All"
-    ? projects
-    : projects.filter((project) => project.category === selectedCategory);
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   // Esc key closes modal
   useEffect(() => {
@@ -52,7 +61,8 @@ export function ProjectsSection() {
           </h2>
           <div className="w-12 h-1 bg-accent rounded-full" />
           <p className="text-muted-foreground text-sm max-w-md mt-2">
-            A curated selection of applications and service systems I have designed and implemented.
+            A curated selection of applications and service systems I have
+            designed and implemented.
           </p>
         </div>
 
@@ -116,7 +126,7 @@ export function ProjectsSection() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold group-hover:text-primary dark:group-hover:text-secondary transition-colors leading-tight">
+                    <h3 className="text-xl font-bold group-hover:text-primary dark:group-hover:text-primary transition-colors leading-tight">
                       {project.title}
                     </h3>
 
@@ -200,7 +210,7 @@ export function ProjectsSection() {
                     <p className="text-foreground/90 leading-relaxed text-sm sm:text-base">
                       {activeProject.longDescription}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-4 mt-2">
                       <a
                         href={activeProject.githubUrl}
@@ -265,7 +275,10 @@ export function ProjectsSection() {
                       </h4>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                         {activeProject.features.map((feat) => (
-                          <li key={feat} className="flex gap-2.5 items-start text-foreground/85">
+                          <li
+                            key={feat}
+                            className="flex gap-2.5 items-start text-foreground/85"
+                          >
                             <span className="p-0.5 rounded-full bg-accent/10 border border-accent/20 text-accent flex-shrink-0 mt-0.5">
                               <Check className="w-3.5 h-3.5" />
                             </span>

@@ -12,7 +12,7 @@ import Button from "@/components/ui/Button";
 
 export function HeroSection() {
   const { name, typewriterRoles, tagline, shortBio, profileImage } = profile;
-  
+
   const [roleIndex, setRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -33,7 +33,7 @@ export function HeroSection() {
         setCurrentText(
           isDeleting
             ? fullText.substring(0, currentText.length - 1)
-            : fullText.substring(0, currentText.length + 1)
+            : fullText.substring(0, currentText.length + 1),
         );
       }, typingSpeed);
     }
@@ -73,19 +73,27 @@ export function HeroSection() {
           <p className="text-lg font-medium text-foreground/80 max-w-lg">
             {tagline}
           </p>
-          
-          <p className="text-muted-foreground max-w-lg">
-            {shortBio}
-          </p>
+
+          <p className="text-muted-foreground max-w-lg">{shortBio}</p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mt-2">
-            <Button href="#projects" variant="primary" size="lg" className="w-full sm:w-auto gap-2">
-              Lihat Proyek Saya
+            <Button
+              href="#projects"
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto gap-2"
+            >
+              See My Projects
               <ArrowRight className="w-4 h-4" />
             </Button>
-            
-            <Button href="#contact" variant="outline" size="lg" className="w-full sm:w-auto gap-2">
-              Hubungi Saya
+
+            <Button
+              href="#contact"
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto gap-2"
+            >
+              Contact Me
               <Send className="w-4 h-4" />
             </Button>
           </div>
@@ -113,7 +121,7 @@ export function HeroSection() {
               Find me on
             </p>
             <div className="flex flex-wrap justify-center gap-3 max-w-full">
-{socialLinks.map((social) => {
+              {socialLinks.map((social) => {
                 const icons = {
                   github: (
                     <svg
@@ -184,7 +192,7 @@ export function HeroSection() {
             <div className="relative group w-64 h-64 sm:w-80 sm:h-80">
               {/* Pulsing background shadow borders */}
               <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 animate-tilt" />
-              
+
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-border/80 bg-card group-hover:border-primary/50 transition-all duration-300 shadow-2xl">
                 <Image
                   src={profileImage}
