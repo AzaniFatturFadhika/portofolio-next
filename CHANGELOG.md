@@ -1,0 +1,21 @@
+# Changelog
+
+All notable changes to the **Software Engineer Portfolio** project will be documented in this file. This format is based on [Keep a Changelog](https://keepachangelog.com/en/0.1.0/) and this release adheres to [Semantic Versioning](https://semver.org/).
+
+---
+
+## [0.1.0] - 2026-06-09
+
+### Added
+
+- **Project Setup:** Initialization of Next.js 16 + TypeScript + Tailwind CSS v4 + ESLint with the Turbopack compiler.
+- **Global Layout & Theme Engine:** Sticky glassmorphic scroll-triggered Navbar design, responsive Footer with social media icons, and ThemeProvider for instant Light/Dark Mode toggle.
+- **Hero Section:** Asynchronous typewriter loop animation, smooth-scroll CTA buttons, CV download, and a glowing gradient-bordered professional headshot profile image.
+- **About & Pillars Section:** Bio page for the developer profile and 3 Core Pillars cards for software engineering values with unique icons.
+- **Skills Section:** Technical skills organized into 5 architectural blocks (Frontend, Backend, Database, DevOps, Tools) with clean, modern badges.
+- **Projects Showcase:** Interactive Framer Motion category filtering, AI-generated thumbnail mockups, and a detail specification modal highlighting key features, technical challenges & solutions.
+- **Experience Section:** Vertical split timeline separating career and education history with Briefcase/GraduationCap icon indicators.
+- **Blog System:** Blog list route and dynamic slug-based article reader rendered statically (SSG) for sub-millisecond speeds, fully compatible with Next.js 16 Async Request APIs.
+- **Contact Form:** Client input form validation, spam-trap honeypot (`botfield`), feedback status via Toast notifications, and Formspree API integration.
+- **SEO & Metadata:** Integration of dynamic `sitemap.xml`, `robots.txt`, global Open Graph / Twitter meta tags, and JSON-LD Person schema markup.
+- **Separate Documentation:** Structured documentation including [README.md](README.md), [features.md](docs/features.md), and [architecture.md](docs/architecture.md).
