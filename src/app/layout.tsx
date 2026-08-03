@@ -1,21 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit, Fira_Code } from "next/font/google";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
-  subsets: ["latin"],
-  display: "swap",
-});
+// Google Fonts disabled for offline compatibility
+const outfit = { variable: "font-sans" };
+const firaCode = { variable: "font-mono" };
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://fadhika.vercel.app";
 

@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, Calendar, Clock, ArrowLeft } from "lucide-react";
-import { blogPosts } from "@/data/blog";
 import Container from "@/components/ui/Container";
+
+import { blogPosts } from "@/data/blog";
+
+interface BlogPostPageProps {
+  params: Promise<{ slug: string }>;
+}
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -10,35 +15,33 @@ export async function generateStaticParams() {
   }));
 }
 
-interface BlogPostPageProps {
-  params: Promise<{ slug: string }>;
-}
-
 export async function generateMetadata(props: BlogPostPageProps) {
   const { slug } = await props.params;
-  const post = blogPosts.find((p) => p.slug === slug);
 
-  if (!post) {
+  try {
+    const { metadata } = await import(`@/content/blog/${slug}.mdx`);
     return {
-      title: "Not Found | Fadhika Blog",
+      title: `${metadata.title} | Fadhika Blog`,
+      description: metadata.excerpt,
     };
+  } catch {
+    return { title: "Not Found | Fadhika Blog" };
   }
-
-  return {
-    title: `${post.title} | Fadhika Blog`,
-    description: post.excerpt,
-  };
 }
 
 export default async function BlogPostPage(props: BlogPostPageProps) {
   const { slug } = await props.params;
-  const post = blogPosts.find((p) => p.slug === slug);
 
-  if (!post) {
+  let Post;
+  let metadata;
+
+  try {
+    const postModule = await import(`@/content/blog/${slug}.mdx`);
+    Post = postModule.default;
+    metadata = postModule.metadata;
+  } catch {
     notFound();
   }
-
-  const PostContent = post.content;
 
   return (
     <div className="py-12 bg-background min-h-screen">
@@ -55,7 +58,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-foreground font-semibold line-clamp-1">
-              {post.title}
+              {metadata.title}
             </span>
           </nav>
 
@@ -72,29 +75,29 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
         <header className="flex flex-col gap-4 mb-10">
           <div className="flex items-center gap-3">
             <span className="text-[10px] uppercase tracking-wider font-extrabold text-accent bg-accent/10 px-2.5 py-1 rounded-full">
-              {post.category}
+              {metadata.category}
             </span>
 
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5" />
-                {post.date}
+                {metadata.date}
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5" />
-                {post.readTime}
+                {metadata.readTime}
               </span>
             </div>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-foreground">
-            {post.title}
+            {metadata.title}
           </h1>
         </header>
 
         {/* Article Content Body */}
-        <main className="p-6 sm:p-10 rounded-2xl bg-card border border-border/80 shadow-sm leading-relaxed text-foreground/90">
-          <PostContent />
+        <main className="p-6 sm:p-10 rounded-2xl bg-card border border-border/80 shadow-sm leading-relaxed text-foreground/90 prose prose-slate dark:prose-invert max-w-none">
+          <Post />
         </main>
       </Container>
     </div>

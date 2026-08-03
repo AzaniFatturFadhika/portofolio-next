@@ -129,10 +129,10 @@ export function SkillsSection() {
                 <motion.div
                   variants={cardVariants}
                   style={{ transitionDelay: `${catIndex * 0.05}s` }}
-                  className={`flex flex-col sm:flex-row sm:items-end gap-3 ${isRight ? "sm:justify-end" : ""}`}
+                  className={`flex flex-col sm:items-end gap-3 ${isRight ? "sm:flex-row-reverse" : "sm:flex-row"}`}
                 >
                   <div
-                    className={`flex items-end gap-3 ${isRight ? "flex-row-reverse sm:flex-row" : ""} sm:flex-row`}
+                    className={`flex items-end gap-3 ${isRight ? "flex-row-reverse" : "flex-row"}`}
                   >
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
@@ -170,7 +170,7 @@ export function SkillsSection() {
                       </svg>
                     </motion.div>
 
-                    <div className="flex flex-col">
+                    <div className={`flex flex-col ${isRight ? "text-right items-end" : ""}`}>
                       <h3 className="text-lg sm:text-xl font-bold text-foreground">
                         {category}
                       </h3>
@@ -180,7 +180,7 @@ export function SkillsSection() {
                     </div>
                   </div>
 
-                  <div className="flex-1 h-px bg-border/40 sm:ml-12" />
+                  <div className={`flex-1 h-px bg-border/40 ${isRight ? "sm:mr-12" : "sm:ml-12"}`} />
                   <span className="text-xs font-semibold text-muted-foreground bg-muted/80 px-2 py-0.5 rounded-full self-start sm:self-auto">
                     {catSkills.length}
                   </span>
@@ -195,7 +195,6 @@ export function SkillsSection() {
                       key={skill.name}
                       skill={skill}
                       index={index}
-                      colorClass={meta.color}
                     />
                   ))}
                 </motion.div>
@@ -213,10 +212,9 @@ export function SkillsSection() {
 interface TechStackCardProps {
   skill: NonNullable<typeof skills>[number];
   index: number;
-  colorClass: string;
 }
 
-function TechStackCard({ skill, index, colorClass }: TechStackCardProps) {
+function TechStackCard({ skill, index }: TechStackCardProps) {
   return (
     <motion.div
       variants={cardVariants}
@@ -229,7 +227,7 @@ function TechStackCard({ skill, index, colorClass }: TechStackCardProps) {
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Tech Icon */}
-      <div className="relative z-10 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted/50 group-hover:bg-white/80 dark:group-hover:bg-white/5 border border-border/40 group-hover:border-primary/30 dark:group-hover:border-accent/30 shadow-inner transition-all duration-300">
+      <div className="relative z-10 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted/50 dark:bg-slate-100 group-hover:bg-white dark:group-hover:bg-white border border-border/40 group-hover:border-primary/30 dark:group-hover:border-accent/30 shadow-inner transition-all duration-300">
         {skill.iconName ? (
           // eslint-disable-next-line @next/next/no-img-element -- External SVG icons from devicon CDN
           <img
@@ -253,14 +251,6 @@ function TechStackCard({ skill, index, colorClass }: TechStackCardProps) {
       <span className="relative z-10 text-center text-xs sm:text-sm font-semibold text-foreground/90 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300 line-clamp-2 leading-tight">
         {skill.name}
       </span>
-
-      {/* Accent dot indicator */}
-      {/* <motion.div
-        className={`absolute bottom-3 w-1.5 h-1.5 rounded-full bg-gradient-to-r ${colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.1, type: "spring", stiffness: 500 }}
-      /> */}
     </motion.div>
   );
 }

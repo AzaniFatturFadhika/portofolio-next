@@ -1,0 +1,89 @@
+export const metadata = {
+  title: "Panduan Praktis React Server Actions di Next.js",
+  excerpt: "Pelajari bagaimana Server Actions menyederhanakan komunikasi antara client dan server tanpa perlu membuat API route terpisah.",
+  date: "June 5, 2026",
+  readTime: "6 min read",
+  category: "Next.js",
+};
+
+# Panduan Praktis React Server Actions di Next.js
+
+React Server Actions adalah salah satu fitur paling revolusioner di Next.js App Router. Fitur ini memungkinkan kita untuk mendefinisikan fungsi asinkron yang dieksekusi langsung di server, namun dapat dipanggil secara aman dari komponen client tanpa harus menulis API route manual (menggunakan fetch, REST API, dll).
+
+## Apa itu Server Actions?
+
+Sebelum adanya Server Actions, jika ingin mengirim data formulir ke server, kita harus membuat endpoint API terpisah (seperti `/api/submit`), lalu menggunakan handler `onSubmit` di sisi client untuk melakukan `fetch()` ke endpoint tersebut.
+
+Dengan Server Actions, Anda cukup menulis fungsi server biasa dan menjalankannya langsung di dalam elemen form HTML menggunakan atribut `action`.
+
+<Callout type="note" title="Info Penting">
+  Secara internal, Next.js akan secara otomatis membuat endpoint POST tersembunyi dan melakukan fetch di balik layar, menghemat penulisan boilerplate code.
+</Callout>
+
+## 1. Membuat Server Action Pertama Anda
+
+Cara paling mendasar untuk membuat Server Action adalah dengan menulis direktif `'use server'` di baris pertama fungsi atau berkas terpisah:
+
+```typescript
+// src/app/actions.ts
+'use server';
+
+export async function handleSubscribe(formData: FormData) {
+  const email = formData.get('email');
+  
+  if (!email) {
+    return { success: false, message: 'Email tidak boleh kosong' };
+  }
+
+  // Lakukan penyimpanan ke database di sini
+  console.log(`Menyimpan email: ${email}`);
+
+  return { success: true, message: 'Berhasil berlangganan newsletter!' };
+}
+```
+
+## 2. Memanggil Server Action dari Form Client
+
+Setelah mendefinisikannya di berkas server, Anda dapat langsung mengimpor dan menggunakannya di komponen sisi client:
+
+```tsx
+// src/components/SubscribeForm.tsx
+'use client';
+
+import { handleSubscribe } from '@/app/actions';
+import { useState } from 'react';
+
+export default function SubscribeForm() {
+  const [message, setMessage] = useState('');
+
+  async function actionHandler(formData: FormData) {
+    const result = await handleSubscribe(formData);
+    setMessage(result.message);
+  }
+
+  return (
+    <form action={actionHandler} className="flex flex-col gap-3">
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="Masukkan email Anda"
+        className="px-4 py-2 border rounded-lg"
+      />
+      <button type="submit" className="bg-primary text-white py-2 rounded-lg">
+        Berlangganan
+      </button>
+      {message && <p className="text-sm mt-2">{message}</p>}
+    </form>
+  );
+}
+```
+
+## Keuntungan Menggunakan Server Actions
+
+1. **Mengurangi Boilerplate**: Tidak perlu lagi mengelola endpoint API terpisah dan status fetching fetch loading.
+2. **Progressive Enhancement**: Form dapat berfungsi bahkan sebelum JavaScript sisi klien selesai dimuat (jika tidak menggunakan state client yang kompleks).
+3. **Type Safety**: Komunikasi data dari form client ke server terikat penuh oleh sistem tipe TypeScript.
+
+## Kesimpulan
+
+React Server Actions menjembatani celah komunikasi client-server dengan sangat elegan di Next.js. Dengan mengurangi jumlah API route yang harus dikelola, developer dapat memusatkan logika aplikasi secara lebih efisien dan terstruktur.

@@ -1,0 +1,44 @@
+export const metadata = {
+  title: "Mengapa TypeScript adalah Pilihan Terbaik untuk Project Next.js",
+  excerpt:
+    "Evaluasi mendalam tentang integrasi tipe data statis, peningkatan produktivitas, dan auto-completion dalam framework modern.",
+  date: "June 1, 2026",
+  readTime: "5 min read",
+  category: "TypeScript",
+};
+
+# Mengapa TypeScript Adalah Pilihan Terbaik untuk Project Next.js
+
+Next.js dan TypeScript telah menjadi kombinasi standar dalam pengembangan web modern. Dengan kemampuan rendering Next.js yang fleksibel dan kekuatan pengetikan statis TypeScript, developer dapat membangun web berskala besar dengan lebih percaya diri dan minim bug.
+
+## 1. Autocomplete dan Penjelajahan Kode yang Cepat
+
+TypeScript memberikan sistem auto-completion yang cerdas (IntelliSense) langsung di code editor Anda. Ketika Anda mengimpor properti dari Next.js seperti Link, Image, atau config API, editor akan memberikan deskripsi detail tipe props yang valid. Hal ini mengurangi kebutuhan untuk terus-menerus membuka tab dokumentasi eksternal.
+
+<Callout type="tip" title="Pro Tip">
+  Manfaatkan fitur auto-import di VS Code dengan menekan{" "}
+  <code>Ctrl/Cmd + Shift + O</code> untuk navigasi cepat antar komponen.
+</Callout>
+
+## 2. Keamanan Tipe pada Routing & API
+
+Pada Next.js App Router, routing dynamic segment memerlukan parsing params yang valid. Dengan TypeScript, kita dapat mengetik layout props dan page props secara eksplisit untuk memastikan parameter dynamic path terdefinisi dengan benar:
+
+```typescript
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
+  return <h1>Product: {id}</h1>;
+}
+```
+
+## 3. Next.js Typegen
+
+Next.js menyertakan fitur code generator khusus untuk TypeScript yang secara otomatis membuat file konfigurasi tipe global. Fitur ini memvalidasi link routing Anda di seluruh project dan memberikan warning jika Anda mengarahkan link ke rute yang tidak valid.
+
+## Kesimpulan
+
+Mengadopsi TypeScript dalam project Next.js Anda bukan sekadar tentang menambahkan tipe data, melainkan investasi dalam produktivitas tim jangka panjang dan kestabilan aplikasi production.

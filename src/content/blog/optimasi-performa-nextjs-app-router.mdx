@@ -1,0 +1,38 @@
+export const metadata = {
+  title: "Tips Optimasi Performa Next.js App Router",
+  excerpt: "Pelajari cara mengoptimalkan runtime Next.js dengan Server Components, dynamic imports, dan optimalisasi rendering gambar.",
+  date: "May 20, 2026",
+  readTime: "8 min read",
+  category: "Performance",
+};
+
+# Tips Optimasi Performa Next.js App Router
+
+Performa website merupakan salah satu faktor penentu kepuasan pengguna dan peringkat SEO di mesin pencari. Dengan dirilisnya App Router pada Next.js, ada banyak cara baru untuk mempercepat waktu pemuatan halaman Anda.
+
+## 1. Manfaatkan React Server Components (RSC)
+
+Secara default, semua komponen di App Router adalah Server Components. Ini berarti komponen tersebut dirender di server dan HTML-nya dikirimkan ke client tanpa menyertakan bundle JavaScript komponen tersebut. Gunakan Client Components (menggunakan direktif `'use client'`) hanya untuk bagian yang interaktif, seperti form input atau accordion.
+
+## 2. Optimasi Gambar dengan next/image
+
+Hindari menggunakan tag HTML `<img>` biasa. Komponen `Image` dari Next.js secara otomatis melakukan:
+- Konversi format gambar ke WebP atau AVIF yang sangat ringan.
+- Resizing gambar sesuai dengan viewport layar perangkat pengguna.
+- Lazy-loading otomatis untuk gambar di bawah garis lipatan (below-the-fold).
+
+## 3. Penerapan Dynamic Imports
+
+Gunakan `next/dynamic` untuk memecah bundle JavaScript. Komponen yang berat atau jarang digunakan (seperti grafik penjualan atau modal popup) dapat dimuat secara asinkron hanya ketika dibutuhkan.
+
+```javascript
+import dynamic from 'next/dynamic'
+
+const ChartComponent = dynamic(() => import('@/components/Chart'), {
+  loading: () => <p>Memuat grafik...</p>,
+})
+```
+
+## 4. Memahami dynamicParams dan caching
+
+Next.js 16 memiliki performa caching static assets yang sangat cepat. Prerender sebanyak mungkin halaman menggunakan `generateStaticParams()` agar web tersaji instan dari Content Delivery Network (CDN).

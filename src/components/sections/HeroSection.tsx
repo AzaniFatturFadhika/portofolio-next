@@ -58,9 +58,9 @@ export function HeroSection() {
           transition={{ duration: 0.6 }}
           className="col-span-1 md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left gap-6"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary dark:text-accent tracking-wider uppercase">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary dark:text-accent tracking-wider uppercase">
             🚀 Welcome to my portfolio
-          </div>
+          </div> */}
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
             Hi, I&apos;m <span className="text-primary">{name}</span>
@@ -98,14 +98,14 @@ export function HeroSection() {
             </Button>
           </div>
 
-          <a
+          {/* <a
             href={cvPath}
             download
             className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 hover:text-primary dark:hover:text-accent hover:underline transition-colors mt-2"
           >
             <Download className="w-4 h-4" />
             Unduh CV Lengkap (PDF)
-          </a>
+          </a> */}
         </motion.div>
 
         {/* Right Image & Social Links */}
