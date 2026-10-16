@@ -1,0 +1,240 @@
+{
+  "Nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "skills": "Keahlian",
+    "projects": "Proyek",
+    "experience": "Pengalaman",
+    "blog": "Blog",
+    "contact": "Kontak",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu"
+  },
+  "Hero": {
+    "greeting": "Halo, saya",
+    "findMeOn": "Temukan saya di",
+    "seeProjects": "Lihat Proyek Saya",
+    "contactMe": "Hubungi Saya"
+  },
+  "About": {
+    "title": "Tentang Saya",
+    "journeyTitle": "Perjalanan & Tujuan Saya",
+    "outsideCode": "Di luar kode, Anda bisa menemukan saya membaca tulisan teknis, membangun proyek sampingan, atau berkontribusi di komunitas developer. Saya berusaha membawa energi positif dan rekayasa berkualitas ke setiap tim yang saya ikuti.",
+    "pillarsTitle": "Pilar Utama Saya"
+  },
+  "Skills": {
+    "titlePrefix": "Keahlian",
+    "titleHighlight": "Teknis",
+    "titleSuffix": "& Tech Stack",
+    "subtitle": "Teknologi dan alat yang saya gunakan untuk menciptakan aplikasi yang bersih dan performan.",
+    "categories": {
+      "programmingLanguages": {
+        "label": "Bahasa Pemrograman",
+        "description": "Bahasa pemrograman inti yang saya gunakan sehari-hari untuk membangun aplikasi"
+      },
+      "frameworkLibrary": {
+        "label": "Framework & Library",
+        "description": "Framework, library, dan runtime environment"
+      },
+      "database": {
+        "label": "Basis Data",
+        "description": "Basis data, ORM, dan solusi caching"
+      },
+      "devops": {
+        "label": "DevOps",
+        "description": "Platform cloud, CI/CD, dan kontainerisasi"
+      },
+      "tools": {
+        "label": "Perkakas",
+        "description": "Alat pengembangan dan perangkat lunak produktivitas"
+      }
+    }
+  },
+  "Projects": {
+    "title": "Proyek Unggulan",
+    "subtitle": "Pilihan aplikasi dan sistem layanan yang telah saya rancang dan implementasikan.",
+    "viewDetail": "Lihat Detail",
+    "all": "Semua",
+    "sourceCode": "Kode Sumber",
+    "liveDemo": "Demo Langsung",
+    "technologiesUsed": "Teknologi yang Digunakan",
+    "keyFeatures": "Fitur Utama",
+    "challenge": "Tantangan Teknis",
+    "solution": "Solusi",
+    "closeModal": "Tutup modal",
+    "items": {
+      "project-1": {
+        "title": "DevStore Dashboard",
+        "description": "Panel admin e-commerce komprehensif dengan analitik penjualan real-time dan manajemen inventaris.",
+        "longDescription": "DevStore Dashboard adalah portal administratif lengkap untuk merchant online. Menyajikan wawasan penjualan yang actionable, agregasi statistik produk secara dinamis, dan manajemen inventaris penuh melalui antarmuka yang aman.",
+        "features": [
+          "Grafik pendapatan dan penjualan real-time menggunakan Recharts.",
+          "Pelacakan inventaris dengan tag peringatan stok menipis otomatis.",
+          "Autentikasi peran pengguna yang aman dan aksi berbasis peran.",
+          "Tabel dinamis dengan paginasi, pengurutan, dan kueri filter teks."
+        ],
+        "challenges": "Agregasi dataset transaksi yang besar di server menyebabkan layout shift yang terasa dan waktu respons lambat pada koneksi pelan.",
+        "solutions": "Menerapkan paginasi sisi server dan caching dengan Prisma, serta menambahkan skeleton React Suspense agar transisi halaman tetap instan dan mulus."
+      },
+      "project-2": {
+        "title": "PulseFit Tracker",
+        "description": "Aplikasi mobile lintas platform untuk melacak target kebugaran, latihan, dan nutrisi harian.",
+        "longDescription": "PulseFit adalah pelacak mobile modern yang membantu pengguna sadar kesehatan merencanakan latihan, menghitung kalori, dan memvisualisasikan pencapaian mingguan. Berjalan mulus secara offline dan menyinkronkan data ke backend saat koneksi pulih.",
+        "features": [
+          "Penyusun rutin kustom dengan timer latihan otomatis.",
+          "Pencatatan nutrisi dan pelacak kalori harian.",
+          "Dukungan database offline menyimpan data lokal di SQLite.",
+          "Laporan analitik mingguan via tata letak native yang indah."
+        ],
+        "challenges": "Menyinkronkan log offline SQLite dengan database API jarak jauh sambil menyelesaikan konflik timestamp dan urutan data.",
+        "solutions": "Membuat sistem antrean tangguh yang mencatat mutasi state, mengurutkan dan menyelesaikan aksi secara kronologis dengan retry backoff eksponensial."
+      },
+      "project-3": {
+        "title": "GatewayX Microservice API",
+        "description": "API gateway microservice dengan rate limiting, logging, dan dispatcher permintaan CORS.",
+        "longDescription": "GatewayX berfungsi sebagai gerbang terpusat yang merutekan permintaan antara lapisan frontend dan microservice backend. Dilengkapi parsing token kustom, rate-limiting berkecepatan tinggi, dan pipeline logging komprehensif.",
+        "features": [
+          "Pemeriksaan autentikasi token sub-milidetik didukung caching Redis.",
+          "Konfigurasi rate limiting berbasis IP dan berbasis akun.",
+          "Pipeline CORS terpusat, header keamanan, dan penerusan permintaan.",
+          "Pipeline log terstruktur yang mengalirkan flag peringatan dan log error."
+        ],
+        "challenges": "Menangani ribuan permintaan otorisasi konkuren menciptakan bottleneck koneksi database.",
+        "solutions": "Memindahkan validasi token ke penyimpanan in-memory Redis, menyelesaikan cache hit secara instan dan mengurangi kueri database backend hingga 85%."
+      }
+    }
+  },
+  "Experience": {
+    "title": "Pendidikan & Pengalaman",
+    "subtitle": "Fondasi akademik dan perjalanan profesional saya di rekayasa perangkat lunak.",
+    "items": {
+      "exp-1": {
+        "role": "Junior Web Developer",
+        "description": "Bertanggung jawab membangun dan memelihara dashboard customer-facing serta API integrasi full-stack.",
+        "achievements": [
+          "Merefactor state container React lawas ke React Context dan Redux Toolkit, mengurangi re-render hingga 35%.",
+          "Berkolaborasi merancang endpoint REST baru menggunakan NestJS dan Node.js untuk sistem vendor eksternal.",
+          "Mengoptimalkan runtime kueri di PostgreSQL, mempercepat pengambilan data dashboard."
+        ]
+      },
+      "exp-2": {
+        "role": "Web Developer Magang",
+        "description": "Membantu engineer frontend senior menerjemahkan mockup Figma menjadi template React yang pixel-perfect dan aksesibel.",
+        "achievements": [
+          "Membangun lebih dari 15 halaman web responsif dan komponen UI menggunakan Tailwind CSS dan React.",
+          "Menambahkan dukungan navigasi keyboard, meningkatkan skor audit aksesibilitas Lighthouse hingga 95+.",
+          "Memperbaiki bug responsif UI pada viewport mobile untuk 5 situs klien."
+        ]
+      },
+      "exp-3": {
+        "role": "S1 Ilmu Komputer",
+        "description": "Lulus dengan IPK 3.8/4.0. Fokus pada metodologi rekayasa perangkat lunak, teknologi web, dan desain basis data.",
+        "achievements": [
+          "Menyelesaikan Proyek Capstone: membangun portal booking ruangan kampus otomatis menggunakan Next.js.",
+          "Anggota aktif Klub Coding universitas dan peserta hackathon lokal."
+        ]
+      }
+    }
+  },
+  "Blog": {
+    "pageTitle": "Blog Teknis",
+    "pageSubtitle": "Tulisan seputar rekayasa perangkat lunak, optimasi performa, dan praktik terbaik dalam menulis kode bersih (clean code).",
+    "home": "Beranda",
+    "blog": "Blog",
+    "backHome": "Kembali ke Beranda",
+    "backToList": "Kembali ke Daftar Blog",
+    "readMore": "Baca Selengkapnya",
+    "readPost": "Baca Post",
+    "viewAll": "Lihat Semua Artikel",
+    "latestTitle": "Artikel Terbaru",
+    "latestSubtitle": "Catatan teknis seputar web development, tips rekayasa perangkat lunak, dan eksplorasi teknologi modern.",
+    "notFoundTitle": "Tidak Ditemukan | Blog Fadhika",
+    "items": {
+      "mengapa-typescript-terbaik-untuk-nextjs": {
+        "title": "Mengapa TypeScript adalah Pilihan Terbaik untuk Project Next.js",
+        "excerpt": "Evaluasi mendalam tentang integrasi tipe data statis, peningkatan produktivitas, dan auto-completion dalam framework modern."
+      },
+      "panduan-praktis-react-server-actions": {
+        "title": "Panduan Praktis React Server Actions di Next.js",
+        "excerpt": "Pelajari bagaimana Server Actions menyederhanakan komunikasi antara client dan server tanpa perlu membuat API route terpisah."
+      },
+      "optimasi-performa-nextjs-app-router": {
+        "title": "Tips Optimasi Performa Next.js App Router",
+        "excerpt": "Pelajari cara mengoptimalkan runtime Next.js dengan Server Components, dynamic imports, dan optimalisasi rendering gambar."
+      }
+    }
+  },
+  "Contact": {
+    "title": "Hubungi Saya",
+    "subtitle": "Punya proyek dalam pikiran, peluang rekrutmen, atau sekadar ingin mengobrol? Kirim pesan!",
+    "getInTouch": "Mari Terhubung",
+    "availability": "Saya biasanya aktif pada jam kerja. Silakan hubungi saya melalui formulir atau kanal sosial saya.",
+    "emailLabel": "Surel",
+    "locationLabel": "Lokasi",
+    "locationValue": "Jakarta, Indonesia",
+    "socialProfiles": "Profil Sosial",
+    "nameLabel": "Nama Anda",
+    "namePlaceholder": "John Doe",
+    "emailPlaceholder": "john@example.com",
+    "subjectLabel": "Subjek",
+    "subjectPlaceholder": "Kesempatan Kerjasama / Rekrutmen",
+    "messageLabel": "Pesan Anda",
+    "messagePlaceholder": "Halo Fadhika, saya tertarik untuk mendiskusikan...",
+    "sending": "Mengirim...",
+    "send": "Kirim Pesan"
+  },
+  "Footer": {
+    "tagline": "Junior Software Engineer yang passionate membangun aplikasi web yang bersih dan berperforma tinggi.",
+    "rights": "Seluruh hak cipta dilindungi.",
+    "builtWith": "Dibangun dengan Next.js 16, TypeScript, dan Tailwind CSS."
+  },
+  "Profile": {
+    "name": "Fadhika",
+    "title": "Junior Software Engineer",
+    "typewriterRoles": [
+      "Frontend Developer",
+      "Backend Integrator",
+      "TypeScript Enthusiast",
+      "Problem Solver"
+    ],
+    "tagline": "Membangun aplikasi web yang bersih, performan, dan berpusat pada pengguna.",
+    "shortBio": "Saya seorang Junior Software Engineer yang passionate berbasis di Indonesia, berspesialisasi dalam pengembangan React, Next.js, dan TypeScript. Saya suka membangun antarmuka web yang memberikan pengalaman pengguna hebat sambil menjaga backend tetap bersih dan solid.",
+    "longBio": "Saya memulai perjalanan di pengembangan perangkat lunak dengan membangun skrip otomasi web, yang dengan cepat berkembang menjadi passion terhadap aplikasi web full-stack. Saya fokus menulis kode yang bersih, type-safe, dan self-documenting. Saya senang bekerja dengan stack web modern seperti Next.js, Tailwind CSS, PostgreSQL, dan Node.js, selalu bertujuan mempelajari praktik terbaik dan mengoptimalkan performa web.",
+    "outsideCode": "Di luar kode, Anda bisa menemukan saya membaca tulisan teknis, membangun proyek sampingan, atau berkontribusi di komunitas developer. Saya berusaha membawa energi positif dan rekayasa berkualitas ke setiap tim yang saya ikuti.",
+    "values": [
+      {
+        "title": "Kode Bersih",
+        "description": "Saya percaya menulis kode yang mudah dibaca, self-documenting, dan mudah dipelihara oleh anggota tim."
+      },
+      {
+        "title": "Pembelajaran Berkelanjutan",
+        "description": "Teknologi bergerak cepat. Saya meluangkan waktu mingguan untuk membaca dokumentasi, mencoba library baru, dan meningkatkan pola coding saya."
+      },
+      {
+        "title": "Desain Berpusat Pengguna",
+        "description": "Sebuah fitur hanya sebagus kegunaannya. Saya memprioritaskan aksesibilitas, alur tata letak yang bersih, dan micro-interactions."
+      }
+    ]
+  },
+  "Metadata": {
+    "title": "Fadhika | Junior Software Engineer Portfolio",
+    "description": "Portofolio Fadhika, seorang Junior Software Engineer yang menampilkan proyek frontend, backend, basis data, dan devops serta artikel teknologi.",
+    "keywords": ["Software Engineer", "Junior Developer", "Portofolio", "Web Developer", "React", "Next.js", "TypeScript"],
+    "blogTitle": "Blog | Portofolio Fadhika",
+    "blogDescription": "Baca artikel teknis tentang rekayasa perangkat lunak, pengembangan web, React, dan TypeScript."
+  },
+  "Common": {
+    "toggleTheme": "Ganti mode gelap"
+  },
+  "Validation": {
+    "nameRequired": "Nama wajib diisi.",
+    "emailRequired": "Email wajib diisi.",
+    "emailInvalid": "Format email tidak valid.",
+    "subjectRequired": "Subjek wajib diisi.",
+    "messageRequired": "Pesan wajib diisi.",
+    "spamDetected": "Spam terdeteksi. Pesan tidak dikirim.",
+    "success": "Pesan berhasil dikirim! Saya akan segera menghubungi Anda.",
+    "successLocal": "Pesan terkirim! (Simulasi sukses lokal)",
+    "failed": "Gagal mengirim pesan. Silakan hubungi saya via email langsung."
+  }
+}

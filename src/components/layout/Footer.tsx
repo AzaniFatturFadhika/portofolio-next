@@ -1,9 +1,12 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Mail } from "lucide-react";
-import { navLinks } from "@/data/navigation";
+import { Link } from "@/i18n/routing";
+import { navItems } from "@/i18n/navigation";
 import { socialLinks } from "@/data/socials";
 
 export function Footer() {
+  const tNav = useTranslations("Nav");
+  const t = useTranslations("Footer");
   const currentYear = new Date().getFullYear();
 
   const getIcon = (platform: string) => {
@@ -81,19 +84,19 @@ export function Footer() {
             Fadhika<span className="text-accent">.</span>
           </Link>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Junior Software Engineer passionate about building clean, high-performance web applications.
+            {t("tagline")}
           </p>
         </div>
 
         {/* Footer Navigation */}
         <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm">
-          {navLinks.map((link) => (
+          {navItems.map((link) => (
             <Link
-              key={link.label}
+              key={link.key}
               href={link.href}
               className="text-foreground/80 hover:text-primary dark:hover:text-accent transition-colors duration-200"
             >
-              {link.label}
+              {tNav(link.key)}
             </Link>
           ))}
         </div>
@@ -118,10 +121,10 @@ export function Footer() {
 
       <div className="max-w-6xl mx-auto border-t border-border/60 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-muted-foreground text-center sm:text-left">
-          &copy; {currentYear} Fadhika. All rights reserved.
+          &copy; {currentYear} Fadhika. {t("rights")}
         </p>
         <p className="text-xs text-muted-foreground text-center sm:text-right">
-          Built with Next.js 16, TypeScript, and Tailwind CSS.
+          {t("builtWith")}
         </p>
       </div>
     </footer>

@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { navLinks } from "@/data/navigation";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
+import { navItems } from "@/i18n/navigation";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 
 export function Navbar() {
+  const t = useTranslations("Nav");
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,7 +30,6 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Brand Logo */}
         <Link
           href="/#home"
           className="text-xl font-extrabold tracking-tight group"
@@ -38,21 +40,20 @@ export function Navbar() {
           <span className="text-accent group-hover:animate-pulse">.</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navItems.map((link) => (
             <Link
-              key={link.label}
+              key={link.key}
               href={link.href}
               className="text-sm font-medium text-foreground/80 hover:text-primary dark:hover:text-accent transition-colors duration-200"
             >
-              {link.label}
+              {t(link.key)}
             </Link>
           ))}
         </nav>
 
-        {/* Action Controls */}
         <div className="flex items-center gap-3">
+          <LanguageSwitcher />
           <ThemeToggle />
           <MobileMenu />
         </div>

@@ -1,0 +1,240 @@
+{
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "blog": "Blog",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Hero": {
+    "greeting": "Hi, I'm",
+    "findMeOn": "Find me on",
+    "seeProjects": "See My Projects",
+    "contactMe": "Contact Me"
+  },
+  "About": {
+    "title": "About Me",
+    "journeyTitle": "My Journey & Goals",
+    "outsideCode": "Outside of code, you can find me reading technical write-ups, building side projects, or contributing to developer communities. I strive to bring positive energy and quality engineering to every team I join.",
+    "pillarsTitle": "My Core Pillars"
+  },
+  "Skills": {
+    "titlePrefix": "Technical",
+    "titleHighlight": "Skills",
+    "titleSuffix": "& Tech Stack",
+    "subtitle": "Technologies and tools I use to create clean, performant applications.",
+    "categories": {
+      "programmingLanguages": {
+        "label": "Programming Languages",
+        "description": "Core programming languages I use daily for building applications"
+      },
+      "frameworkLibrary": {
+        "label": "Framework & Library",
+        "description": "Frameworks, libraries, and runtime environments"
+      },
+      "database": {
+        "label": "Database",
+        "description": "Databases, ORMs, and caching solutions"
+      },
+      "devops": {
+        "label": "DevOps",
+        "description": "Cloud platforms, CI/CD, and containerization"
+      },
+      "tools": {
+        "label": "Tools",
+        "description": "Development tools and productivity software"
+      }
+    }
+  },
+  "Projects": {
+    "title": "Featured Projects",
+    "subtitle": "A curated selection of applications and service systems I have designed and implemented.",
+    "viewDetail": "View Detail",
+    "all": "All",
+    "sourceCode": "Source Code",
+    "liveDemo": "Live Demo",
+    "technologiesUsed": "Technologies Used",
+    "keyFeatures": "Key Features",
+    "challenge": "Technical Challenge",
+    "solution": "Solution",
+    "closeModal": "Close modal",
+    "items": {
+      "project-1": {
+        "title": "DevStore Dashboard",
+        "description": "A comprehensive e-commerce admin panel featuring real-time sales analytics and inventory management.",
+        "longDescription": "DevStore Dashboard is a fully-featured administrative portal built for online merchants. It delivers actionable sales insights, dynamically aggregates product statistics, and allows complete inventory management through a secure interface.",
+        "features": [
+          "Real-time revenue and sales charts using Recharts.",
+          "Inventory tracking with low-stock automatic alert tags.",
+          "Secure user role authentication and role-based actions.",
+          "Dynamic tables with pagination, sorting, and text filter queries."
+        ],
+        "challenges": "Aggregating large datasets of transactions on the server caused noticeable layout shifts and slow response times on slow connections.",
+        "solutions": "Implemented server-side pagination and caching with Prisma, and added React Suspense skeletons to keep page transitions instant and smooth."
+      },
+      "project-2": {
+        "title": "PulseFit Tracker",
+        "description": "A cross-platform mobile application designed to track fitness goals, workouts, and daily nutrition.",
+        "longDescription": "PulseFit is a modern mobile tracker helping health-conscious users plan workouts, count calories, and visualize weekly achievements. It operates smoothly offline and synchronizes data to a backend once connection is restored.",
+        "features": [
+          "Custom routine builders with automatic exercise timers.",
+          "Nutrition scanning logging and daily calorie trackers.",
+          "Offline database support storing local data in SQLite.",
+          "Weekly analytics reporting via beautiful native layout charts."
+        ],
+        "challenges": "Synchronizing SQLite offline logs with remote API databases while resolving timestamp and data ordering conflicts.",
+        "solutions": "Created a robust queue system that registers state mutations, sorting and resolving actions chronologically with exponential retry backoffs."
+      },
+      "project-3": {
+        "title": "GatewayX Microservice API",
+        "description": "An API gateway microservice configured with rate limiting, logging, and CORS request dispatchers.",
+        "longDescription": "GatewayX functions as a centralized gateway routing requests between frontend layers and back-end microservices. It features custom token parsing, high-speed rate-limiting, and comprehensive logging pipelines.",
+        "features": [
+          "Sub-millisecond token authentication checks powered by Redis caching.",
+          "IP-based and account-based rate limiting configurations.",
+          "Centralized CORS, security headers, and request forwarding pipelines.",
+          "Structured log pipelines streaming warning flags and error logs."
+        ],
+        "challenges": "Handling thousands of concurrent authorization requests created database connection bottlenecks.",
+        "solutions": "Offloaded token validations to an in-memory Redis store, resolving cache hits instantly and reducing backend database queries by 85%."
+      }
+    }
+  },
+  "Experience": {
+    "title": "Education & Experience",
+    "subtitle": "My academic foundation and professional journey in software engineering.",
+    "items": {
+      "exp-1": {
+        "role": "Junior Web Developer",
+        "description": "Responsible for building and maintaining customer-facing dashboards and full-stack integration APIs.",
+        "achievements": [
+          "Refactored legacy React state containers to React Context and Redux Toolkit, decreasing re-renders by 35%.",
+          "Collaborated on designing new REST endpoints using NestJS and Node.js for external vendor systems.",
+          "Optimized query runtimes in PostgreSQL, improving dashboard data retrieval times."
+        ]
+      },
+      "exp-2": {
+        "role": "Web Developer Intern",
+        "description": "Assisted senior frontend engineers in translating Figma mockups into pixel-perfect, accessible React templates.",
+        "achievements": [
+          "Built over 15 responsive website pages and UI components using Tailwind CSS and React.",
+          "Added keyboard navigation accessibility support, boosting accessibility Lighthouse audit scores to 95+.",
+          "Fixed UI responsive bugs on mobile viewports for 5 client websites."
+        ]
+      },
+      "exp-3": {
+        "role": "B.S. in Computer Science",
+        "description": "Graduated with a GPA of 3.8/4.0. Focused on software engineering methodologies, web technologies, and database design.",
+        "achievements": [
+          "Completed a Capstone Project: Built an automated campus room booking portal using Next.js.",
+          "Active member of the University Coding Club and participant in local hackathons."
+        ]
+      }
+    }
+  },
+  "Blog": {
+    "pageTitle": "Technical Blog",
+    "pageSubtitle": "Writings on software engineering, performance optimization, and best practices for writing clean code.",
+    "home": "Home",
+    "blog": "Blog",
+    "backHome": "Back to Home",
+    "backToList": "Back to Blog List",
+    "readMore": "Read More",
+    "readPost": "Read Post",
+    "viewAll": "View All Articles",
+    "latestTitle": "Latest Articles",
+    "latestSubtitle": "Technical notes on web development, software engineering tips, and modern technology explorations.",
+    "notFoundTitle": "Not Found | Fadhika Blog",
+    "items": {
+      "mengapa-typescript-terbaik-untuk-nextjs": {
+        "title": "Why TypeScript Is the Best Choice for Next.js Projects",
+        "excerpt": "An in-depth evaluation of static type integration, productivity gains, and auto-completion in modern frameworks."
+      },
+      "panduan-praktis-react-server-actions": {
+        "title": "A Practical Guide to React Server Actions in Next.js",
+        "excerpt": "Learn how Server Actions simplify client-server communication without separate API routes."
+      },
+      "optimasi-performa-nextjs-app-router": {
+        "title": "Next.js App Router Performance Optimization Tips",
+        "excerpt": "Learn how to optimize the Next.js runtime with Server Components, dynamic imports, and image rendering optimization."
+      }
+    }
+  },
+  "Contact": {
+    "title": "Contact Me",
+    "subtitle": "Have a project in mind, a hiring opportunity, or just want to chat? Drop a message!",
+    "getInTouch": "Get In Touch",
+    "availability": "I am usually active during business hours. Feel free to contact me through the form or my social channels.",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "locationValue": "Jakarta, Indonesia",
+    "socialProfiles": "Social Profiles",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "John Doe",
+    "emailPlaceholder": "john@example.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Collaboration / Hiring Opportunity",
+    "messageLabel": "Your Message",
+    "messagePlaceholder": "Hi Fadhika, I'd like to discuss...",
+    "sending": "Sending...",
+    "send": "Send Message"
+  },
+  "Footer": {
+    "tagline": "Junior Software Engineer passionate about building clean, high-performance web applications.",
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Next.js 16, TypeScript, and Tailwind CSS."
+  },
+  "Profile": {
+    "name": "Fadhika",
+    "title": "Junior Software Engineer",
+    "typewriterRoles": [
+      "Frontend Developer",
+      "Backend Integrator",
+      "TypeScript Enthusiast",
+      "Problem Solver"
+    ],
+    "tagline": "Building clean, performant, and user-centric web applications.",
+    "shortBio": "I am a passionate Junior Software Engineer based in Indonesia, specializing in React, Next.js, and TypeScript development. I love building web interfaces that provide great user experiences while keeping the backend clean and solid.",
+    "longBio": "I began my journey in software development by building web automation scripts, which quickly evolved into a passion for full-stack web applications. I focus on writing clean, type-safe, and self-documenting code. I enjoy working on modern web stacks like Next.js, Tailwind CSS, PostgreSQL, and Node.js, always aiming to learn best practices and optimize web performance.",
+    "outsideCode": "Outside of code, you can find me reading technical write-ups, building side projects, or contributing to developer communities. I strive to bring positive energy and quality engineering to every team I join.",
+    "values": [
+      {
+        "title": "Clean Code",
+        "description": "I believe in writing code that is easy to read, self-documenting, and maintainable for team members."
+      },
+      {
+        "title": "Continuous Learning",
+        "description": "Technology moves fast. I dedicate time weekly to read documentation, try new libraries, and improve my coding patterns."
+      },
+      {
+        "title": "User-Centric Design",
+        "description": "A feature is only as good as its usability. I prioritize accessibility, clean layout flows, and micro-interactions."
+      }
+    ]
+  },
+  "Metadata": {
+    "title": "Fadhika | Junior Software Engineer Portfolio",
+    "description": "Portfolio of Fadhika, a Junior Software Engineer showcasing frontend, backend, database, and devops projects and tech articles.",
+    "keywords": ["Software Engineer", "Junior Developer", "Portfolio", "Web Developer", "React", "Next.js", "TypeScript"],
+    "blogTitle": "Blog | Fadhika Portfolio",
+    "blogDescription": "Read technical articles on software engineering, web development, React, and TypeScript."
+  },
+  "Common": {
+    "toggleTheme": "Toggle dark mode"
+  },
+  "Validation": {
+    "nameRequired": "Name is required.",
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Invalid email format.",
+    "subjectRequired": "Subject is required.",
+    "messageRequired": "Message is required.",
+    "spamDetected": "Spam detected. Message not sent.",
+    "success": "Message sent successfully! I'll get back to you soon.",
+    "successLocal": "Message sent! (Local simulation success)",
+    "failed": "Failed to send message. Please contact me via direct email."
+  }
+}

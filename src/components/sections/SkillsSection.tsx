@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { skills } from "@/data/skills";
 import type { SkillCategory } from "@/types/skill";
 import Container from "@/components/ui/Container";
@@ -28,34 +29,26 @@ const categories: SkillCategory[] = [
   "Tools",
 ];
 
-const categoryMeta: Record<
-  SkillCategory,
-  { color: string; description: string }
-> = {
-  "Programming Languages": {
-    color: "from-blue-500 to-indigo-500",
-    description:
-      "Core programming languages I use daily for building applications",
-  },
-  "Framework & Library": {
-    color: "from-emerald-500 to-teal-500",
-    description: "Frameworks, libraries, and runtime environments",
-  },
-  Database: {
-    color: "from-amber-500 to-orange-500",
-    description: "Databases, ORMs, and caching solutions",
-  },
-  DevOps: {
-    color: "from-cyan-500 to-teal-500",
-    description: "Cloud platforms, CI/CD, and containerization",
-  },
-  Tools: {
-    color: "from-violet-500 to-purple-500",
-    description: "Development tools and productivity software",
-  },
+const categoryKey: Record<SkillCategory, string> = {
+  "Programming Languages": "programmingLanguages",
+  "Framework & Library": "frameworkLibrary",
+  Database: "database",
+  DevOps: "devops",
+  Tools: "tools",
+};
+
+const categoryColor: Record<SkillCategory, string> = {
+  "Programming Languages": "from-blue-500 to-indigo-500",
+  "Framework & Library": "from-emerald-500 to-teal-500",
+  Database: "from-amber-500 to-orange-500",
+  DevOps: "from-cyan-500 to-teal-500",
+  Tools: "from-violet-500 to-purple-500",
 };
 
 export function SkillsSection() {
+  const tBase = useTranslations("Skills");
+  const t = tBase as unknown as (key: string) => string;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -73,19 +66,16 @@ export function SkillsSection() {
       id="skills"
       className="py-32 relative overflow-hidden bg-gradient-to-b from-background via-background/95 to-card/20"
     >
-      {/* Animated background particles */}
       <div className="absolute inset-0 opacity-40 pointer-events-none">
         <div className="absolute top-1/4 left-8 w-2 h-2 rounded-full bg-primary/30 animate-pulse" />
         <div className="absolute top-3/4 right-16 w-3 h-3 rounded-full bg-accent/20 animate-pulse delay-500" />
         <div className="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 rounded-full bg-secondary/40 animate-pulse delay-1000" />
       </div>
 
-      {/* Large blurred orbs for depth */}
       <div className="absolute top-[15%] left-[5%] w-80 h-80 rounded-full bg-primary/[0.03] blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[5%] w-96 h-96 rounded-full bg-accent/[0.02] blur-[140px] pointer-events-none" />
 
       <Container>
-        {/* Title Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,20 +83,18 @@ export function SkillsSection() {
           className="flex flex-col items-center text-center gap-4 mb-20"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-            Technical{" "}
+            {t("titlePrefix")}{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Skills
+              {t("titleHighlight")}
             </span>{" "}
-            & Tech Stack
+            {t("titleSuffix")}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
           <p className="text-muted-foreground text-sm sm:text-base max-w-md leading-relaxed mt-1">
-            Technologies and tools I use to create clean, performant
-            applications.
+            {t("subtitle")}
           </p>
         </motion.div>
 
-        {/* Skill Categories in 2-column Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -116,7 +104,10 @@ export function SkillsSection() {
         >
           {categories.map((category, catIndex) => {
             const catSkills = getSkillsByCategory(category);
-            const meta = categoryMeta[category];
+            const key = categoryKey[category];
+            const label = t(`categories.${key}.label`);
+            const description = t(`categories.${key}.description`);
+            const color = categoryColor[category];
             const isRight = catIndex % 2 === 1;
 
             return (
@@ -125,7 +116,6 @@ export function SkillsSection() {
                 variants={containerVariants}
                 className={`flex flex-col gap-6 ${isRight ? "md:items-end" : ""}`}
               >
-                {/* Category Header */}
                 <motion.div
                   variants={cardVariants}
                   style={{ transitionDelay: `${catIndex * 0.05}s` }}
@@ -141,7 +131,7 @@ export function SkillsSection() {
                         stiffness: 400,
                         damping: 20,
                       }}
-                      className={`w-10 h-10 rounded-xl bg-gradient-to-br ${meta.color} flex items-center justify-center shadow-md`}
+                      className={`w-10 h-10 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-md`}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -172,10 +162,10 @@ export function SkillsSection() {
 
                     <div className={`flex flex-col ${isRight ? "text-right items-end" : ""}`}>
                       <h3 className="text-lg sm:text-xl font-bold text-foreground">
-                        {category}
+                        {label}
                       </h3>
                       <p className="text-xs text-muted-foreground max-w-sm mt-0.5">
-                        {meta.description}
+                        {description}
                       </p>
                     </div>
                   </div>
@@ -186,7 +176,6 @@ export function SkillsSection() {
                   </span>
                 </motion.div>
 
-                {/* Tech Stack Cards Grid */}
                 <motion.div
                   className={`flex flex-wrap gap-3 ${isRight ? "justify-end" : ""}`}
                 >
@@ -223,10 +212,8 @@ function TechStackCard({ skill, index }: TechStackCardProps) {
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
       className="group relative flex flex-col items-center justify-center gap-3 p-3 sm:p-4 rounded-2xl bg-card border border-border/60 shadow-sm hover:shadow-lg hover:border-primary/30 dark:hover:border-accent/30 transition-all duration-300 cursor-default select-none overflow-hidden"
     >
-      {/* Gradient background on hover */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-      {/* Tech Icon */}
       <div className="relative z-10 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-muted/50 dark:bg-slate-100 group-hover:bg-white dark:group-hover:bg-white border border-border/40 group-hover:border-primary/30 dark:group-hover:border-accent/30 shadow-inner transition-all duration-300">
         {skill.iconName ? (
           // eslint-disable-next-line @next/next/no-img-element -- External SVG icons from devicon CDN
@@ -247,7 +234,6 @@ function TechStackCard({ skill, index }: TechStackCardProps) {
         )}
       </div>
 
-      {/* Skill Name */}
       <span className="relative z-10 text-center text-xs sm:text-sm font-semibold text-foreground/90 group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300 line-clamp-2 leading-tight">
         {skill.name}
       </span>

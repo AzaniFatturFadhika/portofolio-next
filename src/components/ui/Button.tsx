@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Link as IntlLink } from "@/i18n/routing";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -54,6 +55,13 @@ export function Button({
         >
           {children}
         </a>
+      );
+    }
+    if (href.startsWith("/#") || href.startsWith("/blog") || href === "/") {
+      return (
+        <IntlLink href={href} className={styles}>
+          {children}
+        </IntlLink>
       );
     }
     return (

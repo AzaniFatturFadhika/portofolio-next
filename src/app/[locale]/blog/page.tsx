@@ -1,27 +1,47 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { hasLocale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 import { ChevronRight, Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Link } from "@/i18n/routing";
 import { blogPosts } from "@/data/blog";
 import Container from "@/components/ui/Container";
 import Card from "@/components/ui/Card";
 
-export const metadata = {
-  title: "Blog | Fadhika Portfolio",
-  description:
-    "Read technical articles on software engineering, web development, React, and TypeScript.",
-};
+interface BlogListingProps {
+  params: Promise<{ locale: string }>;
+}
 
-export default function BlogListingPage() {
+export async function generateMetadata(
+  props: BlogListingProps,
+): Promise<Metadata> {
+  const { locale: rawLocale } = await props.params;
+  if (!hasLocale(routing.locales, rawLocale)) notFound();
+  const locale = rawLocale as (typeof routing.locales)[number];
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+  return { title: t("blogTitle"), description: t("blogDescription") };
+}
+
+export default async function BlogListingPage(props: BlogListingProps) {
+  const { locale: rawLocale } = await props.params;
+  if (!hasLocale(routing.locales, rawLocale)) notFound();
+  const locale = rawLocale as (typeof routing.locales)[number];
+  setRequestLocale(locale);
+  const t = await getTranslations("Blog");
+  const tItemsBase = await getTranslations("Blog.items");
+  const tItems = tItemsBase as unknown as (key: string) => string;
+
   return (
     <div className="py-12 bg-background min-h-screen">
       <Container>
-        {/* Breadcrumb & Back button */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-border/60">
           <nav className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
             <Link href="/" className="hover:text-primary transition-colors">
-              Home
+              {t("home")}
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-foreground font-semibold">Blog</span>
+            <span className="text-foreground font-semibold">{t("blog")}</span>
           </nav>
 
           <Link
@@ -29,22 +49,19 @@ export default function BlogListingPage() {
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-foreground/80 hover:text-primary dark:hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Kembali ke Beranda
+            {t("backHome")}
           </Link>
         </div>
 
-        {/* Page Title */}
         <div className="max-w-2xl mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Technical Blog
+            {t("pageTitle")}
           </h1>
           <p className="text-muted-foreground text-base sm:text-lg">
-            Tulisan seputar rekayasa perangkat lunak, optimasi performa, dan
-            praktik terbaik dalam menulis kode bersih (clean code).
+            {t("pageSubtitle")}
           </p>
         </div>
 
-        {/* Articles List Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {blogPosts.map((post) => (
             <Link
@@ -53,7 +70,6 @@ export default function BlogListingPage() {
               className="block group"
             >
               <Card className="h-full flex flex-col gap-5 p-7 group-hover:border-primary/30 transition-all duration-300">
-                {/* Meta details */}
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] uppercase tracking-wider font-extrabold text-accent bg-accent/10 px-2.5 py-1 rounded-full">
                     {post.category}
@@ -71,19 +87,17 @@ export default function BlogListingPage() {
                   </div>
                 </div>
 
-                {/* Article Info */}
                 <div className="flex flex-col gap-2.5">
                   <h2 className="text-xl sm:text-2xl font-bold group-hover:text-primary dark:group-hover:text-primary transition-colors leading-snug">
-                    {post.title}
+                    {tItems(`${post.slug}.title`)}
                   </h2>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    {post.excerpt}
+                    {tItems(`${post.slug}.excerpt`)}
                   </p>
                 </div>
 
-                {/* CTA link */}
                 <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary dark:text-accent mt-auto pt-2">
-                  <span>Baca Selengkapnya</span>
+                  <span>{t("readMore")}</span>
                   <ChevronRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </Card>

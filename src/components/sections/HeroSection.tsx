@@ -2,16 +2,22 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowRight, Download, Send, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { ArrowRight, Mail } from "lucide-react";
 import { socialLinks } from "@/data/socials";
 import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
-import { cvPath } from "@/data/socials";
+import { Link } from "@/i18n/routing";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
 export function HeroSection() {
-  const { name, typewriterRoles, tagline, shortBio, profileImage } = profile;
+  const t = useTranslations("Hero");
+  const tProfile = useTranslations("Profile");
+  const { name, profileImage } = profile;
+  const typewriterRoles = tProfile.raw("typewriterRoles") as string[];
+  const tagline = tProfile("tagline");
+  const shortBio = tProfile("shortBio");
 
   const [roleIndex, setRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -23,7 +29,6 @@ export function HeroSection() {
     const typingSpeed = isDeleting ? 40 : 80;
 
     if (!isDeleting && currentText === fullText) {
-      // Pause at full text
       timer = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && currentText === "") {
       setIsDeleting(false);
@@ -46,24 +51,18 @@ export function HeroSection() {
       id="home"
       className="relative min-h-[calc(100vh-80px)] flex items-center justify-center py-20 overflow-hidden bg-gradient-to-b from-background via-background/50 to-card/20"
     >
-      {/* Decorative Blur Orbs */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-primary/10 blur-[80px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-80 h-80 rounded-full bg-secondary/15 blur-[100px] pointer-events-none" />
 
       <Container className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-center">
-        {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           className="col-span-1 md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left gap-6"
         >
-          {/* <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-semibold text-primary dark:text-accent tracking-wider uppercase">
-            🚀 Welcome to my portfolio
-          </div> */}
-
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-            Hi, I&apos;m <span className="text-primary">{name}</span>
+            {t("greeting")} <span className="text-primary">{name}</span>
             <div className="h-[1.2em] mt-1 text-2xl sm:text-3xl lg:text-4xl font-semibold text-accent">
               <span>{currentText}</span>
               <span className="animate-pulse ml-0.5 border-r-2 border-accent" />
@@ -77,40 +76,22 @@ export function HeroSection() {
           <p className="text-muted-foreground max-w-lg">{shortBio}</p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mt-2">
-            <Button
-              href="#projects"
-              variant="primary"
-              size="lg"
-              className="w-full sm:w-auto gap-2"
-            >
-              See My Projects
-              <ArrowRight className="w-4 h-4" />
-            </Button>
+            <Link href="/#projects" className="w-full sm:w-auto">
+              <Button variant="primary" size="lg" className="w-full sm:w-auto gap-2">
+                {t("seeProjects")}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
 
-            <Button
-              href="#contact"
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto gap-2"
-            >
-              Contact Me
-              <Send className="w-4 h-4" />
-            </Button>
+            <Link href="/#contact" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto gap-2">
+                {t("contactMe")}
+              </Button>
+            </Link>
           </div>
-
-          {/* <a
-            href={cvPath}
-            download
-            className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 hover:text-primary dark:hover:text-accent hover:underline transition-colors mt-2"
-          >
-            <Download className="w-4 h-4" />
-            Unduh CV Lengkap (PDF)
-          </a> */}
         </motion.div>
 
-        {/* Right Image & Social Links */}
         <div className="col-span-1 md:col-span-5 flex flex-col items-center gap-8">
-          {/* Social Links - Above on mobile, beside on desktop */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,7 +99,7 @@ export function HeroSection() {
             className="flex flex-col items-center gap-3"
           >
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-              Find me on
+              {t("findMeOn")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 max-w-full">
               {socialLinks.map((social) => {
@@ -182,7 +163,6 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -190,7 +170,6 @@ export function HeroSection() {
             className="flex justify-center"
           >
             <div className="relative group w-64 h-64 sm:w-80 sm:h-80">
-              {/* Pulsing background shadow borders */}
               <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 animate-tilt" />
 
               <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-border/80 bg-card group-hover:border-primary/50 transition-all duration-300 shadow-2xl">
