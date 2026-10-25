@@ -11,6 +11,9 @@ This portfolio website follows a standard Next.js App Router structure with a cl
 ```txt
 src/
   app/                 # Next.js App Router (Routes & Layouts)
+    (cms)/             # Isolated route group for the Outstatic dashboard
+      outstatic/       # Dashboard at /outstatic (own root layout, own CSS)
+    api/outstatic/     # Dashboard API (GitHub read/write)
     blog/              # Route for the Blog List Page
     blog/[slug]/       # Dynamic Route for Detailed Articles
     globals.css        # Tailwind CSS v4 Imports & Theme Variables
@@ -19,14 +22,17 @@ src/
     robots.ts          # Dynamic robots.txt Generator
     sitemap.ts         # Dynamic sitemap.xml Generator
   components/
+    blog/              # Shared blog layer (ArticleBody, ArticleCard, ArticleMeta)
     layout/            # Layout Components (Navbar, Footer, MobileMenu)
       ThemeProvider.tsx# Next-Themes Provider (Client Component)
       ThemeToggle.tsx  # Light/Dark Theme Switch Button
     sections/          # Homepage Sections (Hero, About, Skills, etc.)
     ui/                # Reusable Primitive UI Components (Button, Card, Input)
   data/                # Static Data Files (Decoupled Content)
-  lib/                 # Utility Functions (JSON-LD Helper, etc.)
-  types/               # TypeScript Type Definitions
+  lib/                 # Utility Functions (articles.ts, cms.ts, JSON-LD Helper)
+  types/               # TypeScript Type Definitions (incl. article.ts)
+outstatic/
+  content/articles/    # Managed Markdown articles (frontmatter + body)
 ```
 
 ---
@@ -39,7 +45,15 @@ The UI components are specifically designed **not to contain hardcoded text data
 * **[skills.ts](file:///home/fadhika/Documents/GitHub/portofolio/src/data/skills.ts):** Contains the complete list of technical skills mapped by category.
 * **[projects.ts](file:///home/fadhika/Documents/GitHub/portofolio/src/data/projects.ts):** Contains detailed project details along with features, challenges, and solutions.
 * **[experience.ts](file:///home/fadhika/Documents/GitHub/portofolio/src/data/experience.ts):** Contains work career and educational history.
-* **[blog.tsx](file:///home/fadhika/Documents/GitHub/portofolio/src/data/blog.tsx):** Stores the list of blog posts and contains the JSX elements to render article contents directly.
+
+Blog articles are the exception: they are managed content, not static data. Articles live in
+`outstatic/content/articles/` as Markdown files with frontmatter (`title`, `excerpt`,
+`publishedAt`, `readTime`, `category`, `status`, `slug`), authored through the Outstatic
+dashboard at `/outstatic`. The read path is shared by all three public surfaces
+(`src/lib/cms.ts` → `getArticles()` / `getArticleBySlug()`), so the landing-page writing
+section, blog listing, and article detail can never diverge. Pure transforms
+(filtering, sorting, date formatting, summary mapping) live in `src/lib/articles.ts` and are
+covered by unit tests; filesystem access stays in `src/lib/cms.ts`.
 
 *Benefits:* This makes updating the website content in the future extremely simple. You only need to modify these data files without risking any breakage to the React component structure (`.tsx`).
 
@@ -58,7 +72,7 @@ interface BlogPostPageProps {
 export default async function BlogPostPage(props: BlogPostPageProps) {
   // Awaiting params is required in Next.js 16 before accessing its properties
   const { slug } = await props.params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const article = await getArticleBySlug(slug);
   ...
 }
 ```

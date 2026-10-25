@@ -5,10 +5,13 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import BlogSection from "@/components/sections/BlogSection";
 import ContactSection from "@/components/sections/ContactSection";
+import { selectLatest } from "@/lib/articles";
+import { getArticles } from "@/lib/cms";
 import { getPersonSchema } from "@/lib/jsonld";
 
-export default function Home() {
+export default async function Home() {
   const schema = getPersonSchema();
+  const articles = await getArticles();
 
   return (
     <>
@@ -21,7 +24,7 @@ export default function Home() {
       <SkillsSection />
       <ProjectsSection />
       <ExperienceSection />
-      <BlogSection />
+      <BlogSection articles={selectLatest(articles, 3)} />
       <ContactSection />
     </>
   );

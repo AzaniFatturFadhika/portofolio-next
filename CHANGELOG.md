@@ -4,6 +4,25 @@ All notable changes to the **Software Engineer Portfolio** project will be docum
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- **Outstatic CMS:** Embedded content dashboard at `/outstatic` (GitHub OAuth) with an `articles` collection. Landing-page writing section, blog listing, and article detail all read from `outstatic/content/articles/` through a shared access path (`src/lib/cms.ts`).
+- **Shared Blog Layer:** New `src/components/blog/` components (`ArticleBody`, `ArticleCard`, `ArticleMeta`, `BlogEmptyState`) so all three public surfaces render identical metadata and cards.
+- **Safe Markdown Rendering:** Article bodies render via `markdown-to-jsx` with callout-styled blockquotes, responsive tables, and lazy-loaded images; no raw HTML injection.
+- **Per-Article SEO:** `BlogPosting` structured data on article pages; sitemap generated from managed content; dashboard and API paths disallowed in `robots.txt`.
+- **Automated Tests:** Vitest runner (`pnpm test`) with 16 tests covering article transforms, filtering, sorting, summary mapping, and markdown safety.
+
+### Changed
+
+- **Blog Content Migration:** The three existing articles moved from `src/content/blog/*.mdx` + `src/data/blog.tsx` to `outstatic/content/articles/*.mdx` with unchanged slugs, titles, summaries, dates, and categories.
+- **Tailwind CSS:** Pinned to `4.1.10` to satisfy the Outstatic peer requirement.
+
+### Removed
+
+- **Legacy Blog Sources:** Deleted `src/data/blog.tsx` and `src/content/blog/` (superseded by managed content).
+
 ## [0.1.0] - 2026-06-09
 
 ### Added

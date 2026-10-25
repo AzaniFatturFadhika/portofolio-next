@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronRight, Calendar, Clock, BookOpen } from "lucide-react";
-import { blogPosts } from "@/data/blog";
+import { ChevronRight, BookOpen } from "lucide-react";
 import Container from "@/components/ui/Container";
-import Card from "@/components/ui/Card";
+import { ArticleCard } from "@/components/blog/ArticleCard";
+import { BlogEmptyState } from "@/components/blog/BlogEmptyState";
+import type { ArticleSummary } from "@/types/article";
 
-export function BlogSection() {
-  // Take up to 3 latest posts
-  const latestPosts = blogPosts.slice(0, 3);
+interface BlogSectionProps {
+  articles: ArticleSummary[];
+}
 
+export function BlogSection({ articles }: BlogSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -42,10 +44,10 @@ export function BlogSection() {
       <Container>
         {/* Title Block */}
         <div className="flex flex-col items-center text-center gap-2 mb-16">
-          {/* <span className="text-xs uppercase tracking-widest font-extrabold text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 px-3 py-1 rounded-full flex items-center gap-1.5 w-fit">
-            <BookOpen className="w-3.5 h-3.5" />
+          <span className="text-xs uppercase tracking-widest font-extrabold text-primary dark:text-accent bg-primary/10 dark:bg-accent/10 px-3 py-1 rounded-full flex items-center gap-1.5 w-fit">
+            <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
             Writing
-          </span> */}
+          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-2 text-foreground">
             Latest Articles
           </h2>
@@ -57,60 +59,29 @@ export function BlogSection() {
         </div>
 
         {/* Grid of Articles */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14"
-        >
-          {latestPosts.map((post) => (
-            <motion.div
-              key={post.slug}
-              variants={cardVariants}
-              className="h-full"
-            >
-              <Link href={`/blog/${post.slug}`} className="block h-full group">
-                <Card className="h-full flex flex-col justify-between gap-5 p-7 hover:border-primary/30 group-hover:shadow-md transition-all duration-300">
-                  {/* Category & Metadata */}
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] uppercase tracking-wider font-extrabold text-accent bg-accent/10 px-2.5 py-1 rounded-full">
-                        {post.category}
-                      </span>
-                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <Clock className="w-3.5 h-3.5" />
-                        <span>{post.readTime}</span>
-                      </div>
-                    </div>
-
-                    {/* Title & Excerpt */}
-                    <div className="flex flex-col gap-2">
-                      <h3 className="text-lg sm:text-xl font-bold group-hover:text-primary dark:group-hover:text-primary transition-colors leading-snug">
-                        {post.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Read More Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-border/40 mt-auto">
-                    <span className="text-xs text-muted-foreground flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5" />
-                      {post.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-bold text-primary dark:text-accent">
-                      Baca Post
-                      <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </div>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+        {articles.length > 0 ? (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-14"
+          >
+            {articles.map((article) => (
+              <motion.div
+                key={article.slug}
+                variants={cardVariants}
+                className="h-full"
+              >
+                <ArticleCard article={article} />
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <div className="mb-14">
+            <BlogEmptyState />
+          </div>
+        )}
 
         {/* View All Button */}
         <div className="flex justify-center">

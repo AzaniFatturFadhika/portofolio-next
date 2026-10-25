@@ -1,10 +1,12 @@
-export const metadata = {
-  title: "Panduan Praktis React Server Actions di Next.js",
-  excerpt: "Pelajari bagaimana Server Actions menyederhanakan komunikasi antara client dan server tanpa perlu membuat API route terpisah.",
-  date: "June 5, 2026",
-  readTime: "6 min read",
-  category: "Next.js",
-};
+---
+title: "Panduan Praktis React Server Actions di Next.js"
+excerpt: "Pelajari bagaimana Server Actions menyederhanakan komunikasi antara client dan server tanpa perlu membuat API route terpisah."
+publishedAt: "2026-06-05"
+readTime: "6 min read"
+category: "Next.js"
+status: "published"
+slug: "panduan-praktis-react-server-actions"
+---
 
 # Panduan Praktis React Server Actions di Next.js
 
@@ -16,9 +18,7 @@ Sebelum adanya Server Actions, jika ingin mengirim data formulir ke server, kita
 
 Dengan Server Actions, Anda cukup menulis fungsi server biasa dan menjalankannya langsung di dalam elemen form HTML menggunakan atribut `action`.
 
-<Callout type="note" title="Info Penting">
-  Secara internal, Next.js akan secara otomatis membuat endpoint POST tersembunyi dan melakukan fetch di balik layar, menghemat penulisan boilerplate code.
-</Callout>
+> **Note:** **Info Penting** — Secara internal, Next.js akan secara otomatis membuat endpoint POST tersembunyi dan melakukan fetch di balik layar, menghemat penulisan boilerplate code.
 
 ## 1. Membuat Server Action Pertama Anda
 
@@ -61,20 +61,7 @@ export default function SubscribeForm() {
     setMessage(result.message);
   }
 
-  return (
-    <form action={actionHandler} className="flex flex-col gap-3">
-      <input 
-        type="email" 
-        name="email" 
-        placeholder="Masukkan email Anda"
-        className="px-4 py-2 border rounded-lg"
-      />
-      <button type="submit" className="bg-primary text-white py-2 rounded-lg">
-        Berlangganan
-      </button>
-      {message && <p className="text-sm mt-2">{message}</p>}
-    </form>
-  );
+  // Render form yang memanggil actionHandler di sini.
 }
 ```
 

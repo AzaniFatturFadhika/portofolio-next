@@ -75,9 +75,24 @@ File `.env.local`:
 ```env
 NEXT_PUBLIC_BASE_URL=https://your-domain.vercel.app
 NEXT_PUBLIC_FORMSPREE_KEY=your_formspree_form_id
+OST_GITHUB_ID=your_github_oauth_app_id
+OST_GITHUB_SECRET=your_github_oauth_app_secret
+OST_REPO_SLUG=portofolio-next
+OST_REPO_OWNER=AzaniFatturFadhika
+OST_REPO_BRANCH=main
 ```
 
-### 4. Run the Development Server
+### 4. Manage Blog Content (Outstatic)
+
+Blog articles live in `outstatic/content/articles/` as Markdown files with frontmatter
+(`title`, `excerpt`, `publishedAt`, `readTime`, `category`, `status`, `slug`).
+
+Open `http://localhost:3000/outstatic` to sign in with GitHub (requires the `OST_*`
+variables above) and create or edit articles from the dashboard. Saving publishes a
+versioned change to the repository; the landing-page writing section, blog listing, and
+article pages all read from the same source.
+
+### 5. Run the Development Server
 
 ```bash
 pnpm dev
@@ -85,7 +100,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 5. Build for Production
+### 6. Build for Production
 
 To compile and optimize the website for production deployment:
 
