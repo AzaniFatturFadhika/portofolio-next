@@ -7,24 +7,22 @@ export interface SocialLink {
 export const socialLinks: SocialLink[] = [
   {
     platform: "github",
-    url: "https://github.com/fadhika",
+    url: "https://github.com/AzaniFatturFadhika",
     label: "GitHub Profile",
   },
   {
     platform: "linkedin",
-    url: "https://linkedin.com/in/fadhika",
+    url: "https://linkedin.com/in/azani-fattur-fadhika-53146b276/",
     label: "LinkedIn Profile",
   },
   {
-    platform: "instagram",
-    url: "https://instagram.com/fadhika",
+    platform: "threads",
+    url: "https://instagram.com/afatur_dk",
     label: "Instagram Profile",
   },
   {
     platform: "email",
-    url: "mailto:fadhika@example.com",
+    url: "mailto:affdhikaad@gmail.com",
     label: "Email Address",
   },
 ];
-
-export const cvPath = "/cv/cv-fadhika.pdf";

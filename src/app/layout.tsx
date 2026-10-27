@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { ThemeSync } from "@/components/layout/ThemeSync";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -52,16 +53,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${outfit.variable} ${firaCode.variable} h-full antialiased scroll-smooth`}
+      data-theme="portfolio"
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground antialiased font-sans">
+      <body className="min-h-full flex flex-col bg-background text-foreground antialiased font-sans" suppressHydrationWarning>
         <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            storageKey="portfolio-theme"
+          >
+            <ThemeSync />
+            <Navbar />
           <main className="flex-1 flex flex-col">
             {children}
           </main>

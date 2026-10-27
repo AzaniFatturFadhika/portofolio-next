@@ -1,11 +1,13 @@
-import { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blog";
+import type { MetadataRoute } from "next";
+import { getArticles } from "@/lib/cms";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://fadhika.vercel.app";
-  
-  const posts = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://fadhika.vercel.app";
+
+  const articles = await getArticles();
+  const posts = articles.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,

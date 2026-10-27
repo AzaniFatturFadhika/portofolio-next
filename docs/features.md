@@ -43,10 +43,15 @@ This document explains in detail the functionality, technical implementation, an
 
 ---
 
-## 6. Dynamic Blog System
+## 6. Dynamic Blog System (Outstatic CMS)
+* **Owner Dashboard:** Authenticated content editor at `/outstatic` (GitHub OAuth, excluded from navigation and search indexing). Owners create, edit, unpublish, and delete articles with title, summary, publication date, category, reading time, cover image, and rich body.
+* **Single Content Source:** The landing-page writing section, blog listing, and article detail all read from `outstatic/content/articles/` through one shared access path (`src/lib/cms.ts`), so their data cannot diverge.
+* **Draft Lifecycle:** Only `published` articles are exposed publicly; drafts are unreachable from listings, sitemap, and direct addresses.
 * **Static Site Generated (SSG):** Uses Next.js `generateStaticParams()` to pre-render all article slugs into static HTML files during build time. This removes runtime server processing and guarantees sub-millisecond load speeds, maximizing performance and SEO score.
 * **Next.js 16 Async Request APIs:** Conforms to Next.js 16 breaking changes by parsing dynamic route parameters asynchronously (`await params`).
+* **Safe Markdown Rendering:** Article bodies render via `markdown-to-jsx` (no raw HTML injection); blockquotes are styled as callouts, tables scroll horizontally at small widths, and images lazy-load.
 * **Breadcrumbs:** Easy path navigation indicator `Home > Blog > Article Title` to simplify navigation.
+* **Per-Article SEO:** Each article emits `BlogPosting` structured data alongside the existing Person schema, and the sitemap is generated from managed content.
 
 ---
 

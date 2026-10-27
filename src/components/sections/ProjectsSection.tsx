@@ -20,13 +20,21 @@ export function ProjectsSection() {
     "Web",
     "Mobile",
     "API",
+    "Embedded",
+    "IoT",
+    "AI",
     "Other",
   ];
 
   const filteredProjects =
     selectedCategory === "All"
       ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+      : projects.filter((project) => {
+          const cats = Array.isArray(project.category)
+            ? project.category
+            : [project.category];
+          return cats.includes(selectedCategory);
+        });
 
   // Esc key closes modal
   useEffect(() => {
@@ -57,7 +65,7 @@ export function ProjectsSection() {
         {/* Title */}
         <div className="flex flex-col items-center text-center gap-2 mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Featured Projects
+            My Projects
           </h2>
           <div className="w-12 h-1 bg-accent rounded-full" />
           <p className="text-muted-foreground text-sm max-w-md mt-2">
@@ -122,7 +130,9 @@ export function ProjectsSection() {
                   <div className="p-6 flex flex-col flex-1 gap-4">
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] uppercase tracking-wider font-extrabold text-accent bg-accent/10 px-2.5 py-1 rounded-full">
-                        {project.category}
+                        {Array.isArray(project.category)
+                          ? project.category.join(", ")
+                          : project.category}
                       </span>
                     </div>
 
@@ -194,7 +204,9 @@ export function ProjectsSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end p-6">
                     <div className="flex flex-col gap-1 text-white">
                       <span className="text-[10px] uppercase font-bold text-accent bg-accent/25 backdrop-blur-md px-3 py-1 rounded-full w-fit">
-                        {activeProject.category}
+                        {Array.isArray(activeProject.category)
+                          ? activeProject.category.join(", ")
+                          : activeProject.category}
                       </span>
                       <h3 className="text-2xl sm:text-3xl font-extrabold mt-1">
                         {activeProject.title}

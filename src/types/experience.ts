@@ -1,4 +1,10 @@
-export type ExperienceType = "work" | "education";
+export type ExperienceType =
+  | "work"
+  | "education"
+  | "internship"
+  | "freelance"
+  | "volunteer"
+  | "other";
 
 export interface ExperienceEntry {
   id: string;

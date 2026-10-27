@@ -6,7 +6,6 @@ import { ArrowRight, Download, Send, Mail } from "lucide-react";
 import { socialLinks } from "@/data/socials";
 import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
-import { cvPath } from "@/data/socials";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
@@ -97,15 +96,6 @@ export function HeroSection() {
               <Send className="w-4 h-4" />
             </Button>
           </div>
-
-          {/* <a
-            href={cvPath}
-            download
-            className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/80 hover:text-primary dark:hover:text-accent hover:underline transition-colors mt-2"
-          >
-            <Download className="w-4 h-4" />
-            Unduh CV Lengkap (PDF)
-          </a> */}
         </motion.div>
 
         {/* Right Image & Social Links */}
