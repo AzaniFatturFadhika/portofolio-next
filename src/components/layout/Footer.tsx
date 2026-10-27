@@ -74,14 +74,13 @@ export function Footer() {
   return (
     <footer className="bg-card border-t border-border mt-auto py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-        
         {/* Brand/Details */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2">
           <Link href="/#home" className="text-lg font-bold tracking-tight">
             Fadhika<span className="text-accent">.</span>
           </Link>
           <p className="text-sm text-muted-foreground max-w-xs">
-            Junior Software Engineer passionate about building clean, high-performance web applications.
+            Making Technology Work for People.
           </p>
         </div>
 
@@ -113,7 +112,6 @@ export function Footer() {
             </a>
           ))}
         </div>
-
       </div>
 
       <div className="max-w-6xl mx-auto border-t border-border/60 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
