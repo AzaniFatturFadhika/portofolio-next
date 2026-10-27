@@ -4,7 +4,7 @@ export const experiences: ExperienceEntry[] = [
   {
     id: "exp-1",
     role: "D4 Teknologi Rekayasa Komputer",
-    institution: "Politeknik Negeri Semarang.",
+    institution: "Politeknik Negeri Semarang",
     period: "Aug 2023 - Present",
     type: "education",
     description:
