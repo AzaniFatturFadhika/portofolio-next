@@ -16,32 +16,38 @@ export const profile: Profile = {
   name: "Fadhika",
   title: "Junior Software Engineer",
   typewriterRoles: [
-    "Frontend Developer",
-    "Backend Integrator",
-    "TypeScript Enthusiast",
+    "System/Software Enginner",
+    "AI Generalist",
+    // "IoT Enthusiast",
+    "Full-Stack Developer",
     "Problem Solver",
   ],
-  tagline: "Building clean, performant, and user-centric web applications.",
+  tagline: "Making Technology Work for People.",
   shortBio:
-    "I am a passionate Junior Software Engineer based in Indonesia, specializing in React, Next.js, and TypeScript development. I love building web interfaces that provide great user experiences while keeping the backend clean and solid.",
+    "I am an enthusiastic junior software or systems engineer based in Indonesia, specializing in React, Next.js, and TypeScript development. I enjoy building systems that provide solutions to real-world problems.",
   longBio:
-    "I began my journey in software development by building web automation scripts, which quickly evolved into a passion for full-stack web applications. I focus on writing clean, type-safe, and self-documenting code. I enjoy working on modern web stacks like Next.js, Tailwind CSS, PostgreSQL, and Node.js, always aiming to learn best practices and optimize web performance.",
+    "I began my journey in software development by building web automation scripts, which quickly evolved into a passion for full-stack web applications. I focus on writing clean, type-safe, and self-documenting code. I enjoy working on modern web stacks like Next.js, Tailwind CSS, PostgreSQL, and Node.js, I began my software development journey by writing my first web scripts in PHP, which quickly evolved into a deep passion for building full-stack TypeScript applications. My primary focus is on software architecture—specifically writing clean, type-safe, and self-documenting code. I enjoy working with modern web stacks, including Next.js, Tailwind CSS, PostgreSQL, and Node.js, while constantly striving to master best practices and optimize system performance. Recently, I have been diving into Spec-Driven Development (SDD) and leveraging AI coding assistants to accelerate my workflow and bring my projects to life more efficiently. Let's connect!always aiming to learn best practices and optimize web performance.",
   profileImage: "/images/profile/profile.jpg",
   personalValues: [
     {
-      title: "Clean Code",
+      title: "Purpose-Driven Architecture",
       description:
-        "I believe in writing code that is easy to read, self-documenting, and maintainable for team members.",
+        "I focus on clean architecture and clear domain boundaries, ensuring the tech stack and system design are precisely tailored to the end-user's needs.",
     },
     {
-      title: "Continuous Learning",
+      title: "Systems Thinking",
       description:
-        "Technology moves fast. I dedicate time weekly to read documentation, try new libraries, and improve my coding patterns.",
+        "I thrive on breaking down complex challenges, deeply understanding the underlying mechanics, and designing precise, solid logic to handle them effectively.",
     },
     {
-      title: "User-Centric Design",
+      title: "AI-Accelerated Development",
       description:
-        "A feature is only as good as its usability. I prioritize accessibility, clean layout flows, and micro-interactions.",
+        "I constantly explore new technologies and leverage AI coding agents to accelerate development workflows, building projects faster while hitting exact targets.",
     },
+    // {
+    //   title: "Engineering Excellence",
+    //   description:
+    //     "I am dedicated to mastering modern workflows—such as Spec-Driven Development—and applying industry best practices to ensure high-quality project execution.",
+    // },
   ],
 };

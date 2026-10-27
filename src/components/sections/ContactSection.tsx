@@ -269,10 +269,10 @@ export function ContactSection() {
                     Email
                   </span>
                   <a
-                    href="mailto:fadhika@example.com"
+                    href="mailto:affdhikaad@gmail.com"
                     className="text-sm font-semibold hover:text-primary dark:hover:text-accent transition-colors"
                   >
-                    fadhika@example.com
+                    affdhikaad@gmail.com
                   </a>
                 </div>
               </div>
@@ -287,7 +287,7 @@ export function ContactSection() {
                     Lokasi
                   </span>
                   <span className="text-sm font-semibold">
-                    Jakarta, Indonesia
+                    Semarang, Indonesia
                   </span>
                 </div>
               </div>

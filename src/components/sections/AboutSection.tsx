@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, BookOpen, UserCheck } from "lucide-react";
+import { Code, BookOpen, UserCheck, Layers, Cpu, Sparkles, Award } from "lucide-react";
 import { profile } from "@/data/profile";
 import Container from "@/components/ui/Container";
 
@@ -16,8 +16,16 @@ export function AboutSection() {
         return <BookOpen className="w-6 h-6 text-primary dark:text-accent" />;
       case "user-centric design":
         return <UserCheck className="w-6 h-6 text-primary dark:text-accent" />;
+      case "purpose-driven architecture":
+        return <Layers className="w-6 h-6 text-primary dark:text-accent" />;
+      case "systems thinking":
+        return <Cpu className="w-6 h-6 text-primary dark:text-accent" />;
+      case "ai-accelerated development":
+        return <Sparkles className="w-6 h-6 text-primary dark:text-accent" />;
+      case "engineering excellence":
+        return <Award className="w-6 h-6 text-primary dark:text-accent" />;
       default:
-        return null;
+        return <Code className="w-6 h-6 text-primary dark:text-accent" />;
     }
   };
 

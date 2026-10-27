@@ -3,66 +3,112 @@ import { Project } from "@/types/project";
 export const projects: Project[] = [
   {
     id: "project-1",
-    title: "DevStore Dashboard",
-    description: "A comprehensive e-commerce admin panel featuring real-time sales analytics and inventory management.",
+    title: "Avalis Inventory System",
+    description:
+      "A inventory management system for tracking goods, stock levels, and administrative operations.",
     longDescription:
-      "DevStore Dashboard is a fully-featured administrative portal built for online merchants. It delivers actionable sales insights, dynamically aggregates product statistics, and allows complete inventory management through a secure interface.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Recharts"],
+      "Avalis Inventory is a robust management platform designed to streamline stock tracking and monitor warehouse items. It features an intuitive administrative interface to manage product data efficiently and ensure accurate real-time inventory visibility.",
+    techStack: ["PHP", "Bootstrap", "MySQL"],
     category: "Web",
-    githubUrl: "https://github.com/fadhika/devstore-dashboard",
-    demoUrl: "https://devstore-dashboard.demo.com",
-    image: "/images/projects/project-1.png",
+    githubUrl: "https://github.com/AzaniFatturFadhika/avalis_inventory",
+    image: "/images/projects/avalis.png",
     features: [
-      "Real-time revenue and sales charts using Recharts.",
-      "Inventory tracking with low-stock automatic alert tags.",
-      "Secure user role authentication and role-based actions.",
-      "Dynamic tables with pagination, sorting, and text filter queries.",
+      "Stock monitoring and data reporting.",
+      "Dynamic product categorization and item management.",
     ],
     challenges:
-      "Aggregating large datasets of transactions on the server caused noticeable layout shifts and slow response times on slow connections.",
+      "Ensuring accurate data synchronization and preventing data race conditions during concurrent inventory updates.",
     solutions:
-      "Implemented server-side pagination and caching with Prisma, and added React Suspense skeletons to keep page transitions instant and smooth.",
+      "Implemented optimized server-side database queries and transaction handling to guarantee data integrity during stock adjustments.",
   },
   {
     id: "project-2",
-    title: "PulseFit Tracker",
-    description: "A cross-platform mobile application designed to track fitness goals, workouts, and daily nutrition.",
+    title: "Polivent (POlines Events)",
+    description:
+      "An integrated event management mobile application featuring Role-Based Access Control (RBAC).",
     longDescription:
-      "PulseFit is a modern mobile tracker helping health-conscious users plan workouts, count calories, and visualize weekly achievements. It operates smoothly offline and synchronizes data to a backend once connection is restored.",
-    techStack: ["React Native", "Expo", "TypeScript", "Redux Toolkit", "SQLite"],
+      "Polivent is a centralized platform tailored for managing university events. It streamlines event registration, ticketing, and administrative oversight, utilizing complex state management to ensure a seamless and secure user experience for varying user roles.",
+    techStack: ["Flutter", "Dart", "BLoC", "REST API"],
     category: "Mobile",
-    githubUrl: "https://github.com/fadhika/pulsefit-tracker",
-    image: "/images/projects/project-2.png",
+    githubUrl:
+      "https://github.com/PBL-TI2B/event_app/tree/feature/implementation-bloc-state-management",
+    image: "/images/projects/polivent.png",
     features: [
-      "Custom routine builders with automatic exercise timers.",
-      "Nutrition scanning logging and daily calorie trackers.",
-      "Offline database support storing local data in SQLite.",
-      "Weekly analytics reporting via beautiful native layout charts.",
+      "Role-Based Access Control (RBAC) for secure multi-tier user authorization.",
+      "Complex application state handling using the BLoC pattern.",
+      "End-to-end event registration and administrative workflows.",
+      "Real-time updates for event schedules and attendee management.",
     ],
     challenges:
-      "Synchronizing SQLite offline logs with remote API databases while resolving timestamp and data ordering conflicts.",
+      "Managing complex, asynchronous user permissions and data flows across varying access levels without causing UI latency.",
     solutions:
-      "Created a robust queue system that registers state mutations, sorting and resolving actions chronologically with exponential retry backoffs.",
+      "Integrated the BLoC state management pattern to strictly separate business logic from the UI, ensuring predictable state transitions.",
   },
   {
     id: "project-3",
-    title: "GatewayX Microservice API",
-    description: "An API gateway microservice configured with rate limiting, logging, and CORS request dispatchers.",
+    title: "E-Desa (Sistem Informasi Desa Digital)",
+    description:
+      "A digital administration platform bridging village governance with community public services.",
     longDescription:
-      "GatewayX functions as a centralized gateway routing requests between frontend layers and back-end microservices. It features custom token parsing, high-speed rate-limiting, and comprehensive logging pipelines.",
-    techStack: ["Node.js", "Express", "TypeScript", "Redis", "Docker", "Winston"],
-    category: "API",
-    githubUrl: "https://github.com/fadhika/gatewayx-api",
-    image: "/images/projects/project-3.png",
+      "E-Desa is a comprehensive e-government web solution designed to digitize village administrative processes. Built upon a carefully architected relational database schema, it facilitates population data management and secure public record storage.",
+    techStack: ["Vue.js", "Node.js", "PostgreSQL", "REST API", "Tailwind CSS"],
+    category: "Web",
+    githubUrl: "https://github.com/PBL-TI2B/sistem-penduduk-api-vue",
+    image: "/images/projects/edesa.png",
     features: [
-      "Sub-millisecond token authentication checks powered by Redis caching.",
-      "IP-based and account-based rate limiting configurations.",
-      "Centralized CORS, security headers, and request forwarding pipelines.",
-      "Structured log pipelines streaming warning flags and error logs.",
+      "Architected system logic and relational database schemas for complex population data.",
+      "Interactive public service portal for digital village administration.",
+      "Secure API endpoints for sensitive demographic data processing.",
+      "Responsive frontend dashboard built with Vue.js.",
     ],
     challenges:
-      "Handling thousands of concurrent authorization requests created database connection bottlenecks.",
+      "Structuring a highly relational database capable of securely and efficiently handling complex demographic queries.",
     solutions:
-      "Offloaded token validations to an in-memory Redis store, resolving cache hits instantly and reducing backend database queries by 85%.",
+      "Designed highly normalized relational database schemas and optimized API controllers, reducing query latency and ensuring robust data integrity.",
+  },
+  {
+    id: "project-4",
+    title: "WeatherNet IoT & AI Predictor",
+    description:
+      "An IoT-based weather monitoring system featuring LoRa communication, MQTT telemetry, and AI forecasting.",
+    longDescription:
+      "This project bridges hardware telemetry with machine learning to monitor and predict micro-climates in real-time. Microcontrollers collect atmospheric data, transmitting it via LoRa and MQTT to a Python backend, where an AI model processes the data for accurate weather predictions.",
+    techStack: ["Python", "Flutter", "C", "LoRa", "MQTT", "ESP32"],
+    category: ["IoT", "AI", "Mobile"],
+    githubUrl: "https://github.com/AzaniFatturFadhika/weather-prediction",
+    image: "/images/projects/weather.png",
+    features: [
+      "Long-range microcontroller communication integrated with LoRa modules.",
+      "Real-time data telemetry routed through an MQTT broker to a Python backend.",
+      "Predictive weather modeling using a trained RandomForestRegressor.",
+      "Automated data ingestion and sensor monitoring pipeline.",
+    ],
+    challenges:
+      "Ensuring reliable data transmission across hardware layers and preparing volatile sensor data for machine learning inference.",
+    solutions:
+      "Integrated an MQTT broker as a reliable intermediary and implemented data preprocessing in Python to ensure stable AI model inputs.",
+  },
+  {
+    id: "project-5",
+    title: "RC Soccer Car Controller",
+    description:
+      "A high-performance remote control system for an ESP32 RC car, paired with a React Native app.",
+    longDescription:
+      "Developed for a robotic soccer application, this project combines low-level hardware optimization with modern mobile development. The ESP32 firmware utilizes direct memory-mapped register access for ultra-fast GPIO response, controlled seamlessly via a custom mobile application.",
+    techStack: ["React Native", "ESP32", "C/C++", "FreeRTOS", "WebSockets"],
+    category: ["Mobile", "IoT", "Embedded"],
+    githubUrl:
+      "https://github.com/AzaniFatturFadhika/rc-car-esp32-controller-react-native",
+    image: "/images/projects/rccar.png",
+    features: [
+      "Direct GPIO memory-mapped register access for near-instantaneous hardware execution.",
+      "Cross-platform mobile remote control app built with React Native.",
+      "Low-latency wireless communication protocol between the mobile app and microcontroller.",
+      "Accelerated development and debugging workflows utilizing AI Agent assistance.",
+    ],
+    challenges:
+      "Standard high-level GPIO libraries introduced unacceptable latency for real-time robotic soccer control.",
+    solutions:
+      "Bypassed standard libraries by implementing direct memory-mapped register manipulations on the ESP32, drastically reducing input lag and execution time.",
   },
 ];

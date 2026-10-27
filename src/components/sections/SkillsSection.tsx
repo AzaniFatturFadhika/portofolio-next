@@ -101,8 +101,8 @@ export function SkillsSection() {
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
           <p className="text-muted-foreground text-sm sm:text-base max-w-md leading-relaxed mt-1">
-            Technologies and tools I use to create clean, performant
-            applications.
+            The technologies and tools I use to build clean, high-performance
+            applications that I Have Used
           </p>
         </motion.div>
 
@@ -170,7 +170,9 @@ export function SkillsSection() {
                       </svg>
                     </motion.div>
 
-                    <div className={`flex flex-col ${isRight ? "text-right items-end" : ""}`}>
+                    <div
+                      className={`flex flex-col ${isRight ? "text-right items-end" : ""}`}
+                    >
                       <h3 className="text-lg sm:text-xl font-bold text-foreground">
                         {category}
                       </h3>
@@ -180,7 +182,9 @@ export function SkillsSection() {
                     </div>
                   </div>
 
-                  <div className={`flex-1 h-px bg-border/40 ${isRight ? "sm:mr-12" : "sm:ml-12"}`} />
+                  <div
+                    className={`flex-1 h-px bg-border/40 ${isRight ? "sm:mr-12" : "sm:ml-12"}`}
+                  />
                   <span className="text-xs font-semibold text-muted-foreground bg-muted/80 px-2 py-0.5 rounded-full self-start sm:self-auto">
                     {catSkills.length}
                   </span>
