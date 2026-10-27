@@ -23,7 +23,7 @@ export const projects: Project[] = [
   },
   {
     id: "project-2",
-    title: "Polivent (POlines Events)",
+    title: "Polivent (Polines Events)",
     description:
       "An integrated event management mobile application featuring Role-Based Access Control (RBAC).",
     longDescription:
