@@ -13,8 +13,8 @@ export interface Profile {
 }
 
 export const profile: Profile = {
-  name: "Fadhika",
-  title: "Junior Software Engineer",
+  name: "Azani Fattur Fadhika",
+  title: "Junior Software/System Engineer",
   typewriterRoles: [
     "System/Software Enginner",
     "AI Generalist",

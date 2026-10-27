@@ -9,20 +9,29 @@ import "./globals.css";
 const outfit = { variable: "font-sans" };
 const firaCode = { variable: "font-mono" };
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://fadhika.vercel.app";
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://fadhika.vercel.app";
 
 export const metadata: Metadata = {
   title: {
-    default: "Fadhika | Junior Software Engineer Portfolio",
+    default: "Fadhika | Junior Software/System Engineer Portfolio",
     template: "%s | Fadhika Portfolio",
   },
-  description: "Portfolio of Fadhika, a Junior Software Engineer showcasing frontend, backend, database, and devops projects and tech articles.",
+  description: "Portfolio of Fadhika, a Junior Software Engineer.",
   metadataBase: new URL(baseUrl),
-  authors: [{ name: "Fadhika" }],
-  keywords: ["Software Engineer", "Junior Developer", "Portfolio", "Web Developer", "React", "Next.js", "TypeScript"],
+  authors: [{ name: "Azani Fattur Fadhika" }],
+  keywords: [
+    "Software Engineer",
+    "Junior Developer",
+    "Portfolio",
+    "Web Developer",
+    "React",
+    "Next.js",
+    "TypeScript",
+  ],
   openGraph: {
-    title: "Fadhika | Junior Software Engineer Portfolio",
-    description: "Portfolio of Fadhika, a Junior Software Engineer showcasing frontend, backend, database, and devops projects and tech articles.",
+    title: "Fadhika | Junior Software/System Engineer Portfolio",
+    description: "Portfolio of Fadhika, a Junior Software Engineer.",
     url: baseUrl,
     siteName: "Fadhika Portfolio",
     images: [
@@ -38,8 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fadhika | Junior Software Engineer Portfolio",
-    description: "Portfolio of Fadhika, a Junior Software Engineer showcasing frontend, backend, database, and devops projects.",
+    title: "Fadhika | Junior Software/System Engineer Portfolio",
+    description: "Portfolio of Fadhika, a Junior Software/System Engineer",
     images: ["/images/og/og-image.png"],
   },
 };
@@ -56,19 +65,20 @@ export default function RootLayout({
       data-theme="portfolio"
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground antialiased font-sans" suppressHydrationWarning>
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground antialiased font-sans"
+        suppressHydrationWarning
+      >
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-            storageKey="portfolio-theme"
-          >
-            <ThemeSync />
-            <Navbar />
-          <main className="flex-1 flex flex-col">
-            {children}
-          </main>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          storageKey="portfolio-theme"
+        >
+          <ThemeSync />
+          <Navbar />
+          <main className="flex-1 flex flex-col">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
