@@ -16,7 +16,7 @@ export const socialLinks: SocialLink[] = [
     label: "LinkedIn Profile",
   },
   {
-    platform: "threads",
+    platform: "instagram",
     url: "https://instagram.com/afatur_dk",
     label: "Instagram Profile",
   },
